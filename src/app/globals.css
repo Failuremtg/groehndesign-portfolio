@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode with royal purple & mustard yellow */
+:root {
+  --background: #0f0a14;
+  --foreground: #f5f0fa;
+  --primary: #5b2c6f;
+  --primary-hover: #7b3d8f;
+  --secondary: #e4a853;
+  --secondary-hover: #f0bc6a;
+  --muted: #2d2438;
+  --border: #3d3250;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Force header to stay dark, no visible border line */
+header {
+  background-color: #0f0a14 !important;
+  color: var(--foreground);
+  border-bottom: 1px solid #0f0a14 !important;
+}
+
+/* About section cards: subtle scrollbar when content overflows */
+.about-card-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.about-card-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.about-card-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.about-card-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+.about-card-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Hero "typewriter" reveal */
+.hero-type-line {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  animation: hero-type-reveal 900ms steps(28, end) forwards;
+}
+.hero-type-line-2 { animation-delay: 350ms; }
+.hero-type-line-3 { animation-delay: 700ms; }
+
+@keyframes hero-type-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-type-line,
+  .hero-type-line-2,
+  .hero-type-line-3 {
+    animation: none !important;
+    clip-path: inset(0 0 0 0) !important;
+  }
+}

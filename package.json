@@ -1,0 +1,34 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multimedia designer portfolio",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "next": "^14.2.0",
+    "pdfjs-dist": "^5.5.207",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-pdf": "^10.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.0.0"
+  }
+}
