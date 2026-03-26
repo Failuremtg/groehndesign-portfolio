@@ -32,6 +32,12 @@ export function HeaderNav() {
             Home
           </a>
           <a
+            href="/#projects"
+            className={navItemBase}
+          >
+            My work
+          </a>
+          <a
             href="/resume"
             className={navItemBase}
           >
