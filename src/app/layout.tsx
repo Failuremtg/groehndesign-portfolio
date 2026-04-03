@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Permanent_Marker } from 'next/font/google';
 import './globals.css';
 import { ContactWidget } from '@/components/ContactWidget';
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   description: 'Multimedia designer portfolio — work, about, contact.',
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -23,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark ${brushFont.variable}`}>
-      <body className="bg-background text-[var(--foreground)]">
+      <body className="min-w-0 overflow-x-hidden bg-background text-[var(--foreground)]">
         <header
           className="sticky top-0 z-20 isolate"
           style={{ backgroundColor: '#0f0a14', borderBottom: '1px solid #0f0a14' }}

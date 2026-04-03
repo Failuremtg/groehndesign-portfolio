@@ -7,24 +7,27 @@ const CONTACT_LINKEDIN = "https://www.linkedin.com/in/alexander-henriksen-298699
 
 export function HeaderNav() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItemBase =
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-base md:text-lg font-semibold text-secondary bg-primary/10 border border-transparent hover:bg-primary/20 hover:border-[var(--border)] transition-all";
+    "inline-flex items-center justify-center rounded-full px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg font-semibold text-secondary bg-primary/10 border border-transparent hover:bg-primary/20 hover:border-[var(--border)] transition-all whitespace-nowrap";
   const navItemActive = "bg-primary/20 border-[var(--border)]";
 
   useEffect(() => {
-    if (!contactOpen) return;
+    if (!contactOpen && !mobileMenuOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setContactOpen(false);
+      if (e.key !== "Escape") return;
+      if (contactOpen) setContactOpen(false);
+      if (mobileMenuOpen) setMobileMenuOpen(false);
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [contactOpen]);
+  }, [contactOpen, mobileMenuOpen]);
 
   return (
     <>
-      <nav className="container mx-auto px-4 py-3 flex items-center justify-center">
-        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-black/20 backdrop-blur px-3 py-3">
+      <nav className="container mx-auto px-3 md:px-4 py-2 md:py-3 flex items-center justify-center relative">
+        <div className="hidden md:inline-flex items-center gap-2 md:gap-3 rounded-full border border-[var(--border)] bg-black/20 backdrop-blur px-2 md:px-3 py-2 md:py-3">
           <a
             href="/"
             className={navItemBase}
@@ -51,7 +54,55 @@ export function HeaderNav() {
             Contact
           </button>
         </div>
+
+        <div className="md:hidden w-full flex items-center justify-end">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded-xl border border-[var(--border)] bg-primary/10 p-2.5 text-secondary hover:bg-primary/20 transition-colors"
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+              {mobileMenuOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              ) : (
+                <>
+                  <path d="M4 7h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M4 12h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
+
+      {mobileMenuOpen ? (
+        <div className="md:hidden container mx-auto px-3 pb-3">
+          <div className="rounded-2xl border border-[var(--border)] bg-black/40 backdrop-blur p-2 grid gap-2">
+            <a href="/" onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
+              Home
+            </a>
+            <a href="/#projects" onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
+              My work
+            </a>
+            <a href="/resume" onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
+              Resume
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setContactOpen(true);
+              }}
+              className={[navItemBase, contactOpen ? navItemActive : ""].join(" ")}
+            >
+              Contact
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       {contactOpen ? (
         <div

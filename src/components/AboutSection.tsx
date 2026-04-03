@@ -8,7 +8,7 @@ export function AboutSection({ id }: AboutSectionProps) {
   return (
     <section
       id={id}
-      className="min-h-screen flex flex-col justify-center container mx-auto px-4 py-16 md:py-20"
+      className="flex flex-col justify-center container mx-auto px-4 py-14 md:py-20 md:min-h-screen"
     >
       <header className="text-center mb-12 md:mb-16">
         <h2 className="text-3xl font-bold md:text-4xl text-secondary">Hey, It&apos;s me!</h2>
