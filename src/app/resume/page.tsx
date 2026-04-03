@@ -35,75 +35,59 @@ export default function ResumePage() {
             </div>
           </section>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <section className="rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
-              <h3 className="text-lg font-semibold text-secondary">Education</h3>
-              <div className="mt-5 space-y-5">
-                <div>
-                  <p className="font-medium text-secondary/90">VUC HILLERØD (HF)</p>
-                  <p className="text-sm text-white/60">2015–2017</p>
-                </div>
-                <div>
-                  <p className="font-medium text-secondary/90">Læreruddanelsen KP København</p>
-                  <p className="text-sm text-white/60">2017–2020</p>
-                </div>
-                <div>
-                  <p className="font-medium text-secondary/90">EK Lyngby - Multimedie design</p>
-                  <p className="text-sm text-white/60">2024–now</p>
-                </div>
-              </div>
-            </section>
+          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
+            <h3 className="text-lg font-semibold text-secondary">Skills</h3>
+            <ul className="mt-5 text-sm text-white/80 list-disc pl-5 space-y-2">
+              <li>UX design, user research, and user journey mapping</li>
+              <li>Prototyping, ideation, and translating insights into design solutions</li>
+              <li>AI-assisted product development (e.g. Cursor, Claude) for prototyping and build</li>
+              <li>Professional communication, interviews, and cross-team collaboration</li>
+              <li>Event coordination, teaching, and retail / customer-facing roles</li>
+            </ul>
+          </section>
 
-            <section className="rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
-              <h3 className="text-lg font-semibold text-secondary">Work experience</h3>
-              <div className="mt-5 space-y-6">
-                <article>
-                  <p className="font-medium text-secondary/90">Nærumgaard - Caretaker</p>
-                  <p className="text-sm text-white/60">2011–2014</p>
-                  <p className="mt-2 text-sm text-white/70">Take care of children and youngsters with autism and other mental disabilities.</p>
-                  <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
-                    <li>Nightguard</li>
-                    <li>Activity planner</li>
-                  </ul>
-                </article>
+          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
+            <h3 className="text-lg font-semibold text-secondary">Work experience</h3>
+            <div className="mt-5 space-y-6">
+              <article>
+                <p className="font-medium text-secondary/90">Nærumgaard - Caretaker</p>
+                <p className="text-sm text-white/60">2011–2014</p>
+                <p className="mt-2 text-sm text-white/70">Take care of children and youngsters with autism and other mental disabilities.</p>
+                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                  <li>Nightguard</li>
+                  <li>Activity planner</li>
+                </ul>
+              </article>
 
-                <article>
-                  <p className="font-medium text-secondary/90">Eventyrridderne - &quot;Børnetæmmer&quot; Event worker</p>
-                  <p className="text-sm text-white/60">2015–2016</p>
-                  <p className="mt-2 text-sm text-white/70">Create and execute events for children ages 9–15.</p>
-                  <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
-                    <li>Planning events</li>
-                    <li>Play roles/characters in events</li>
-                  </ul>
-                </article>
+              <article>
+                <p className="font-medium text-secondary/90">Eventyrridderne - &quot;Børnetæmmer&quot; Event worker</p>
+                <p className="text-sm text-white/60">2015–2016</p>
+                <p className="mt-2 text-sm text-white/70">Create and execute events for children ages 9–15.</p>
+                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                  <li>Planning events</li>
+                  <li>Play roles/characters in events</li>
+                </ul>
+              </article>
 
-                <article>
-                  <p className="font-medium text-secondary/90">Faraos Cigarer As - Part Time</p>
-                  <p className="text-sm text-white/60">2017–2020</p>
-                  <p className="mt-2 text-sm text-white/70">Stocking shelves, customer relations, and cashier work.</p>
-                  <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
-                    <li>Working at the counter</li>
-                    <li>Taking care of customers coming in the shop</li>
-                  </ul>
-                </article>
+              <article>
+                <p className="font-medium text-secondary/90">Faraos Cigarer As - Part Time</p>
+                <p className="text-sm text-white/60">2017–2020</p>
+                <p className="mt-2 text-sm text-white/70">Stocking shelves, customer relations, and cashier work.</p>
+                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                  <li>Working at the counter</li>
+                  <li>Taking care of customers coming in the shop</li>
+                </ul>
+              </article>
 
-                <article>
-                  <p className="font-medium text-secondary/90">Utterslev skole - Substitute Teacher</p>
-                  <p className="text-sm text-white/60">2018–2019</p>
-                  <p className="mt-2 text-sm text-white/70">Teacher for all grades in primary English and social studies.</p>
-                  <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
-                    <li>Teaching and social training</li>
-                  </ul>
-                </article>
-              </div>
-            </section>
-          </div>
+              <article>
+                <p className="font-medium text-secondary/90">Utterslev skole - Substitute Teacher</p>
+                <p className="text-sm text-white/60">2018–2019</p>
+                <p className="mt-2 text-sm text-white/70">Teacher for all grades in primary English and social studies.</p>
+                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                  <li>Teaching and social training</li>
+                </ul>
+              </article>
 
-          <section className="mt-6 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-8">
-            <div className="flex items-start justify-between gap-6 flex-wrap">
-              <h3 className="text-lg font-semibold text-secondary">More work experience</h3>
-            </div>
-            <div className="mt-5 grid gap-6 md:grid-cols-2">
               <article>
                 <p className="font-medium text-secondary/90">Faraos Cigarer As - Full time Department responsible</p>
                 <p className="text-sm text-white/60">2020–2023</p>
@@ -126,7 +110,7 @@ export default function ResumePage() {
                 </ul>
               </article>
 
-              <article className="md:col-span-2">
+              <article>
                 <p className="font-medium text-secondary/90">Luftens Helte Band - Merchandise seller (volunteer work)</p>
                 <p className="text-sm text-white/60">2023–now</p>
                 <p className="mt-2 text-sm text-white/70">Merchandise coordinator and sales person.</p>
@@ -135,6 +119,24 @@ export default function ResumePage() {
                   <li>Manning the stand during concerts</li>
                 </ul>
               </article>
+            </div>
+          </section>
+
+          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
+            <h3 className="text-lg font-semibold text-secondary">Education</h3>
+            <div className="mt-5 space-y-5">
+              <div>
+                <p className="font-medium text-secondary/90">VUC HILLERØD (HF)</p>
+                <p className="text-sm text-white/60">2015–2017</p>
+              </div>
+              <div>
+                <p className="font-medium text-secondary/90">Læreruddanelsen KP København</p>
+                <p className="text-sm text-white/60">2017–2020</p>
+              </div>
+              <div>
+                <p className="font-medium text-secondary/90">EK Lyngby - Multimedie design</p>
+                <p className="text-sm text-white/60">2024–now</p>
+              </div>
             </div>
           </section>
 
