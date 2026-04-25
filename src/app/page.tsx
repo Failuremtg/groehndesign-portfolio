@@ -2,19 +2,27 @@ import { Hero } from '@/components/Hero';
 import { HeroScrollFade } from '@/components/HeroScrollFade';
 import { AboutSection } from '@/components/AboutSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
+import { PositioningSection } from '@/components/PositioningSection';
+import { ProcessSection } from '@/components/ProcessSection';
+import { SkillsSection } from '@/components/SkillsSection';
+import { ContactSection } from '@/components/ContactSection';
+import { getSiteContent } from '@/sanity/queries';
 
-export default function Home() {
+export default async function Home() {
+  const site = await getSiteContent();
+
   return (
     <>
-      {/* Hero stays fixed and fades to 10% as you scroll */}
       <HeroScrollFade>
-        <Hero />
+        <Hero content={site?.hero} />
       </HeroScrollFade>
-      {/* Content layer: scrolls up and over the hero (higher z-index + background) */}
       <div className="relative z-10 bg-background">
-        <AboutSection id="about" />
-        <ProjectsSection id="projects" />
-        <div id="contact" className="h-1" aria-hidden />
+        <PositioningSection id="positioning" />
+        <ProjectsSection id="projects" content={site?.projects} />
+        <ProcessSection id="process" />
+        <AboutSection id="about" content={site?.about} />
+        <SkillsSection id="skills" />
+        <ContactSection id="contact" />
       </div>
     </>
   );

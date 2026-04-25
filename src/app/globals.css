@@ -2,16 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark mode with royal purple & mustard yellow */
+/* Light “paper UI” theme (less digital, more editorial) */
+/* Single theme: Practical AI-Augmented UX Designer */
 :root {
-  --background: #0f0a14;
-  --foreground: #f5f0fa;
-  --primary: #5b2c6f;
-  --primary-hover: #7b3d8f;
-  --secondary: #e4a853;
-  --secondary-hover: #f0bc6a;
-  --muted: #2d2438;
-  --border: #3d3250;
+  /* Practical AI-Augmented UX Designer (final) */
+  --background: #fbfbfe;
+  --foreground: #0f1020;
+  --text-muted: rgba(15, 16, 32, 0.74);
+  --text-subtle: rgba(15, 16, 32, 0.60);
+  --text-faint: rgba(15, 16, 32, 0.46);
+
+  --muted: rgba(255, 255, 255, 0.82);
+  --muted-2: rgba(255, 255, 255, 0.92);
+  --border: rgba(15, 16, 32, 0.16);
+
+  /* Royal purple + subtle mustard highlights */
+  --primary: #3e2bf6;
+  --primary-hover: #3524db;
+  --secondary: #d0a11b;
+  --secondary-hover: #b98f18;
+
+  --shadow: 0 14px 38px rgba(15, 16, 32, 0.10);
+  --shadow-soft: 0 1px 0 rgba(15, 16, 32, 0.10);
+
+  /* Keep accents crisp (no pastel washes) */
+  --accent-purple-solid: rgba(255, 255, 255, 0.70);
+  --accent-gold-solid: rgba(255, 255, 255, 0.70);
+  --accent-mint-solid: rgba(255, 255, 255, 0.70);
+  --accent-blue-solid: rgba(255, 255, 255, 0.70);
+  --accent-pill-solid: rgba(255, 255, 255, 0.60);
 }
 
 html,
@@ -22,16 +41,227 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-padding-top: 112px;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
+  font-family: var(--font-ui), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Force header to stay dark, no visible border line */
+/* Subtle grid background */
+:root body {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(rgba(15, 16, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 16, 32, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px, 26px 26px;
+  background-position: 0 0, 0 0;
+}
+
+/* Subtle paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 22px 22px, 34px 34px;
+  background-position: 0 0, 13px 17px;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+/* Warm vignette / paper depth */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 700px at 50% 10%, rgba(255, 255, 255, 0.65), transparent 60%),
+    radial-gradient(900px 600px at 20% 30%, rgba(181, 138, 63, 0.10), transparent 65%),
+    radial-gradient(900px 600px at 80% 35%, rgba(91, 44, 111, 0.08), transparent 65%),
+    radial-gradient(1200px 900px at 50% 100%, rgba(0, 0, 0, 0.05), transparent 55%);
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+}
+
+
+/* Subtle separation under sticky header (no hard band) */
 header {
-  background-color: #0f0a14 !important;
-  color: var(--foreground);
-  border-bottom: 1px solid #0f0a14 !important;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Reusable paper UI primitives */
+.paper-card {
+  border: 2px solid var(--border);
+  background: var(--muted);
+  box-shadow: var(--shadow), var(--shadow-soft);
+}
+
+.paper-card-2 {
+  border: 2px solid var(--border);
+  background: var(--muted-2);
+  box-shadow: var(--shadow), var(--shadow-soft);
+}
+
+/* Smooth, modern primitives */
+:root .paper-card,
+:root .paper-card-2 {
+  border-width: 1px;
+  border-color: var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow), var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+:root .paper-pill {
+  border-width: 1px;
+  border-color: var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(13, 18, 32, 0.10);
+}
+
+:root .paper-button {
+  border-width: 1px;
+  border-color: var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 26px rgba(13, 18, 32, 0.12);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:root .paper-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(13, 18, 32, 0.14);
+}
+
+:root .paper-button:active {
+  transform: translateY(0px);
+  box-shadow: 0 8px 20px rgba(13, 18, 32, 0.10);
+}
+
+/* Don’t show paper grain */
+:root body::before,
+:root body::after {
+  opacity: 0;
+}
+
+:root header {
+  box-shadow: 0 1px 0 rgba(13, 18, 32, 0.10);
+}
+
+/* Remove scrapbook/craftbook artifacts */
+:root .scrap-card {
+  transform: none !important;
+}
+
+:root .scrap-card::before,
+:root .scrap-card::after {
+  display: none !important;
+}
+
+:root .paper-tape {
+  display: none !important;
+}
+
+/* Make headings feel more “product UI” */
+:root h1,
+:root h2,
+:root h3 {
+  font-family: var(--font-ui), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.paper-card.accent-purple,
+.paper-card-2.accent-purple {
+  background: var(--accent-purple-solid);
+}
+
+.paper-card.accent-gold,
+.paper-card-2.accent-gold {
+  background: var(--accent-gold-solid);
+}
+
+.paper-card.accent-mint,
+.paper-card-2.accent-mint {
+  background: var(--accent-mint-solid);
+}
+
+.paper-card.accent-blue,
+.paper-card-2.accent-blue {
+  background: var(--accent-blue-solid);
+}
+
+.paper-pill.accent {
+  background: var(--accent-pill-solid);
+}
+
+/* Tape strips (used in Hero) */
+.paper-tape {
+  background: rgba(255, 245, 210, 0.82);
+  border: 2px solid rgba(28, 27, 26, 0.18);
+  border-radius: 3px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.07);
+}
+
+/* Scrapbook wrapper: tape + gentle tilt */
+.scrap-card {
+  position: relative;
+  transform: rotate(-1.25deg);
+  transform-origin: 50% 30%;
+}
+
+.scrap-card.scrap-tilt-right {
+  transform: rotate(1.1deg);
+}
+
+.scrap-card::before,
+.scrap-card::after {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.scrap-card::before {
+  /* One tape strip across the top (site-wide scrapbook motif) */
+  top: -14px;
+  left: 50%;
+  width: 172px;
+  height: 24px;
+  border-radius: 3px;
+  transform: translateX(-50%) rotate(-6deg);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.12) 0px,
+      rgba(255, 255, 255, 0.12) 8px,
+      rgba(0, 0, 0, 0.02) 8px,
+      rgba(0, 0, 0, 0.02) 14px
+    ),
+    rgba(255, 245, 210, 0.82);
+  border: 2px solid rgba(28, 27, 26, 0.18);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.07);
+}
+
+.scrap-card::after {
+  display: none;
+}
+
+/* Make SVG logos/icons feel like “ink” on paper (works well for white SVGs) */
+.ink-icon {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.92;
 }
 
 /* About section cards: subtle scrollbar when content overflows */

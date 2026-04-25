@@ -1,13 +1,26 @@
 import type { Metadata, Viewport } from 'next';
-import { Permanent_Marker } from 'next/font/google';
+import { Fraunces, Inter, Press_Start_2P } from 'next/font/google';
 import './globals.css';
-import { ContactWidget } from '@/components/ContactWidget';
 import { HeaderNav } from '@/components/HeaderNav';
+import { ContactWidgetAutoHideInStudio } from '@/components/ContactWidgetAutoHideInStudio';
+import { getSiteContent } from '@/sanity/queries';
 
-const brushFont = Permanent_Marker({
+const displayFont = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const uiFont = Inter({
+  subsets: ['latin'],
+  variable: '--font-ui',
+  display: 'swap',
+});
+
+const pixelFont = Press_Start_2P({
   subsets: ['latin'],
   weight: '400',
-  variable: '--font-brush',
+  variable: '--font-pixel',
   display: 'swap',
 });
 
@@ -21,31 +34,25 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const site = await getSiteContent();
+
   return (
-    <html lang="en" className={`dark ${brushFont.variable}`}>
+    <html lang="da" data-theme="ai" className={`${displayFont.variable} ${uiFont.variable} ${pixelFont.variable}`}>
       <body className="min-w-0 overflow-x-hidden bg-background text-[var(--foreground)]">
         <header
-          className="sticky top-0 z-20 isolate"
-          style={{ backgroundColor: '#0f0a14', borderBottom: '1px solid #0f0a14' }}
+          className="fixed top-0 left-0 right-0 z-50 isolate border-b-2"
+          style={{ backgroundColor: 'var(--background)', borderColor: 'var(--border)' }}
         >
           <HeaderNav />
         </header>
-        {/* Content fades out as it hits the top (below the nav) */}
-        <div
-          className="fixed left-0 right-0 top-16 z-[15] h-36 pointer-events-none"
-          style={{
-            background: 'linear-gradient(to bottom, var(--background) 0%, transparent 100%)',
-          }}
-          aria-hidden
-        />
-        <main>{children}</main>
-        <ContactWidget />
-        <footer className="border-t border-[var(--border)] py-6 text-center text-sm text-secondary/80">
+        <main className="pt-[92px] md:pt-[104px]">{children}</main>
+        <ContactWidgetAutoHideInStudio content={site?.contact} />
+        <footer className="border-t-2 border-[var(--border)] py-6 text-center text-sm text-black/60">
           Portfolio — multimedia designer
         </footer>
       </body>

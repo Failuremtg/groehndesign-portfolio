@@ -46,35 +46,35 @@ export function PdfModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="w-full max-w-4xl rounded-2xl border border-[var(--border)] bg-background shadow-xl overflow-hidden">
-        <div className="flex items-start justify-between gap-4 px-4 py-3 border-b border-[var(--border)]">
+      <div className="paper-card w-full max-w-4xl rounded-3xl overflow-hidden bg-[var(--background)]">
+        <div className="flex items-start justify-between gap-4 px-4 py-3 border-b-2 border-[var(--border)] bg-[var(--muted-2)]">
           <div className="min-w-0">
             <p className="text-secondary font-medium truncate">{title}</p>
             {description ? (
-              <p className="text-xs text-white/60 mt-1">{description}</p>
+              <p className="text-xs text-[var(--text-subtle)] mt-1">{description}</p>
             ) : null}
-            <p className="text-xs text-white/60 mt-1">Page {pageNumber}</p>
+            <p className="text-xs text-[var(--text-subtle)] mt-1">Page {pageNumber}</p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               type="button"
               onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
               disabled={pageNumber === 1}
-              className="px-3 py-1.5 rounded-lg bg-primary/20 border border-[var(--border)] text-secondary/90 hover:bg-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="paper-button px-3 py-1.5 rounded-xl text-[var(--foreground)] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Prev
             </button>
             <button
               type="button"
               onClick={() => setPageNumber((p) => p + 1)}
-              className="px-3 py-1.5 rounded-lg bg-primary/20 border border-[var(--border)] text-secondary/90 hover:bg-primary/30"
+              className="paper-button px-3 py-1.5 rounded-xl text-[var(--foreground)]"
             >
               Next
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="px-3 py-1.5 rounded-lg bg-muted/60 border border-[var(--border)] text-secondary/90 hover:bg-muted/90"
+              className="paper-button px-3 py-1.5 rounded-xl text-[var(--foreground)]"
             >
               Close
             </button>
@@ -82,7 +82,7 @@ export function PdfModal({
         </div>
 
         <div className="p-4">
-          <div className="rounded-xl bg-muted/30 border border-[var(--border)] overflow-hidden">
+          <div className="paper-card-2 rounded-3xl overflow-hidden">
             <iframe
               title={`${title} - page ${pageNumber}`}
               src={pageSrc}

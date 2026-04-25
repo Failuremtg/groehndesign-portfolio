@@ -12,13 +12,20 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@sanity/client": "^6.29.1",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^3.99.0",
+    "groq": "^5.22.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
     "next": "^14.2.0",
+    "next-sanity": "^8.5.5",
     "pdfjs-dist": "^5.5.207",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "react-pdf": "^10.4.1"
+    "react-pdf": "^10.4.1",
+    "sanity": "^3.99.0",
+    "styled-components": "^6.4.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

@@ -1,13 +1,34 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-const EMAIL = 'alexanderbghenriksen@gmail.com';
-const LINKEDIN = 'https://www.linkedin.com/in/alexander-henriksen-298699383/';
+export type ContactWidgetContent = {
+  email?: string;
+  linkedin?: string;
+  widgetTitle?: string;
+  widgetSubtitle?: string;
+  widgetButtonLabel?: string;
+};
 
-export function ContactWidget() {
+const defaultContent: Required<ContactWidgetContent> = {
+  email: 'alexanderbghenriksen@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/alexander-henriksen-298699383/',
+  widgetTitle: 'Contact me',
+  widgetSubtitle: "Got an idea or a project? Let's talk.",
+  widgetButtonLabel: "Let's connect",
+};
+
+export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
   const [open, setOpen] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
+
+  const c = useMemo(
+    () => ({
+      ...defaultContent,
+      ...content,
+    }),
+    [content],
+  );
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -31,7 +52,7 @@ export function ContactWidget() {
           aria-hidden
         >
           <div className="flex items-center gap-2">
-            <span className="text-sm text-white/80 bg-black/30 border border-[var(--border)] rounded-full px-4 py-1.5">
+            <span className="text-sm text-[var(--foreground)] bg-[var(--muted)] border-2 border-[var(--border)] rounded-full px-4 py-1.5 shadow-sm">
               Click me
             </span>
             <svg
@@ -39,7 +60,7 @@ export function ContactWidget() {
               height="46"
               viewBox="0 0 24 24"
               fill="none"
-              className="text-secondary drop-shadow"
+              className="text-[var(--foreground)]"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -62,24 +83,20 @@ export function ContactWidget() {
 
       {/* Popup */}
       {open ? (
-        <div className="w-[min(94vw,460px)] rounded-3xl border border-[var(--border)] bg-background shadow-2xl overflow-hidden">
+        <div className="paper-card w-[min(94vw,460px)] rounded-3xl overflow-hidden bg-[var(--background)]">
           <div
-            className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)]"
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(91, 44, 111, 0.55), rgba(228, 168, 83, 0.18))',
-            }}
+            className="flex items-center justify-between px-5 py-4 border-b-2 border-[var(--border)] bg-[var(--muted-2)]"
           >
             <div className="min-w-0">
-              <p className="text-secondary font-semibold leading-tight text-lg">Contact me</p>
-              <p className="text-sm text-white/70 mt-1">
-                Got an idea or a project? Let&apos;s talk.
+              <p className="text-secondary font-semibold leading-tight text-lg">{c.widgetTitle}</p>
+              <p className="text-sm text-[var(--text-muted)] mt-1">
+                {c.widgetSubtitle}
               </p>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-3 py-2 text-secondary/80 hover:text-secondary hover:bg-white/10 transition-colors"
+              className="paper-button rounded-2xl px-3 py-2 text-[var(--foreground)]"
               aria-label="Close contact popup"
             >
               ✕
@@ -88,30 +105,30 @@ export function ContactWidget() {
 
           <div className="p-5 space-y-4">
             <a
-              href={`mailto:${EMAIL}`}
-              className="w-full inline-flex items-center gap-4 rounded-2xl bg-primary/10 border border-[var(--border)] px-5 py-4 text-secondary hover:bg-primary/20 transition-all hover:-translate-y-0.5"
+              href={`mailto:${c.email}`}
+              className="paper-card-2 w-full inline-flex items-center gap-4 rounded-3xl px-5 py-4 text-[var(--foreground)] transition-all hover:-translate-y-0.5"
             >
-              <span className="w-12 h-12 rounded-2xl bg-primary/20 border border-[var(--border)] flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <span className="w-12 h-12 rounded-2xl bg-[var(--background)] border-2 border-[var(--border)] flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg className="w-5 h-5 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 8v9a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z" />
                 </svg>
               </span>
               <span className="min-w-0">
                 <span className="block font-semibold">Email</span>
-                <span className="block text-white/70 truncate text-sm">{EMAIL}</span>
+                <span className="block text-[var(--text-muted)] truncate text-sm">{c.email}</span>
               </span>
-              <span className="ml-auto text-white/50 text-sm">→</span>
+              <span className="ml-auto text-[var(--text-faint)] text-sm">→</span>
             </a>
 
             <a
-              href={LINKEDIN}
+              href={c.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center gap-4 rounded-2xl bg-primary/10 border border-[var(--border)] px-5 py-4 text-secondary hover:bg-primary/20 transition-all hover:-translate-y-0.5"
+              className="paper-card-2 w-full inline-flex items-center gap-4 rounded-3xl px-5 py-4 text-[var(--foreground)] transition-all hover:-translate-y-0.5"
             >
-              <span className="w-12 h-12 rounded-2xl bg-primary/20 border border-[var(--border)] flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <span className="w-12 h-12 rounded-2xl bg-[var(--background)] border-2 border-[var(--border)] flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg className="w-5 h-5 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4V9h4v2" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M2 9h4v12H2z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 4a2 2 0 110 4 2 2 0 010-4z" />
@@ -119,13 +136,13 @@ export function ContactWidget() {
               </span>
               <span className="min-w-0">
                 <span className="block font-semibold">LinkedIn</span>
-                <span className="block text-white/70 truncate text-sm">Open profile</span>
+                <span className="block text-[var(--text-muted)] truncate text-sm">Open profile</span>
               </span>
-              <span className="ml-auto text-white/50 text-sm">→</span>
+              <span className="ml-auto text-[var(--text-faint)] text-sm">→</span>
             </a>
 
-            <p className="text-xs text-white/50 pt-1">
-              Tip: press <span className="text-white/70">Esc</span> to close.
+            <p className="text-xs text-[var(--text-faint)] pt-1">
+              Tip: press <span className="text-[var(--text-muted)]">Esc</span> to close.
             </p>
           </div>
         </div>
@@ -135,21 +152,16 @@ export function ContactWidget() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="mt-4 ml-auto inline-flex items-center gap-3 rounded-full border border-[var(--border)] px-5 py-4 text-base text-secondary transition-all shadow-2xl hover:-translate-y-0.5"
-        style={{
-          background:
-            'linear-gradient(135deg, rgba(228, 168, 83, 0.25), rgba(91, 44, 111, 0.35))',
-        }}
+        className="paper-button mt-4 ml-auto inline-flex items-center gap-3 rounded-full px-5 py-4 text-base text-[var(--foreground)] transition-all hover:-translate-y-0.5"
         aria-label={open ? 'Close contact popup' : 'Open contact popup'}
       >
-        <span className="relative w-11 h-11 rounded-full bg-primary/25 border border-[var(--border)] flex items-center justify-center">
-          <span className="absolute -inset-1 rounded-full bg-primary/10 blur-sm" aria-hidden />
-          <svg className="w-5 h-5 text-secondary relative" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <span className="relative w-11 h-11 rounded-full bg-[var(--background)] border-2 border-[var(--border)] flex items-center justify-center shadow-sm">
+          <svg className="w-5 h-5 text-[var(--foreground)] relative" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 10h8M8 14h5" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </span>
-        <span className="font-semibold">Let&apos;s connect</span>
+        <span className="font-semibold">{c.widgetButtonLabel}</span>
       </button>
 
       {/* Local keyframes for hint animation */}

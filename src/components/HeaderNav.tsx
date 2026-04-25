@@ -10,8 +10,26 @@ export function HeaderNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItemBase =
-    "inline-flex items-center justify-center rounded-full px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg font-semibold text-secondary bg-primary/10 border border-transparent hover:bg-primary/20 hover:border-[var(--border)] transition-all whitespace-nowrap";
-  const navItemActive = "bg-primary/20 border-[var(--border)]";
+    "paper-button inline-flex items-center justify-center rounded-2xl px-3 py-2 md:px-4 md:py-2.5 text-sm md:text-base font-semibold text-[var(--foreground)] whitespace-nowrap transition-transform";
+  const navItemActive = "bg-[var(--muted-2)]";
+
+  const t = {
+    home: "Forside",
+    work: "Projekter",
+    resume: "CV",
+    contact: "Kontakt",
+    contactTitle: "Kontakt mig!",
+    contactSubtitle: "Send mig en besked, så vender jeg tilbage.",
+    email: "Email",
+    linkedin: "LinkedIn",
+    sendMessage: "Send mig en besked",
+    openEmail: "Åbn mail-app",
+    openEmailHint: "Knappen åbner din mail-app, så du kan skrive til mig.",
+  };
+
+  const hrefHome = "/";
+  const hrefProjects = "/#projects";
+  const hrefResume = "/resume";
 
   useEffect(() => {
     if (!contactOpen && !mobileMenuOpen) return;
@@ -27,39 +45,39 @@ export function HeaderNav() {
   return (
     <>
       <nav className="container mx-auto px-3 md:px-4 py-2 md:py-3 flex items-center justify-center relative">
-        <div className="hidden md:inline-flex items-center gap-2 md:gap-3 rounded-full border border-[var(--border)] bg-black/20 backdrop-blur px-2 md:px-3 py-2 md:py-3">
+        <div className="hidden md:inline-flex items-center gap-2 md:gap-3 rounded-3xl border-2 border-[var(--border)] bg-[var(--background)] px-2 md:px-3 py-2 md:py-3 shadow-[var(--shadow)]">
           <a
-            href="/"
+            href={hrefHome}
             className={navItemBase}
           >
-            Home
+            {t.home}
           </a>
           <a
-            href="/#projects"
+            href={hrefProjects}
             className={navItemBase}
           >
-            My work
+            {t.work}
           </a>
           <a
-            href="/resume"
+            href={hrefResume}
             className={navItemBase}
           >
-            Resume
+            {t.resume}
           </a>
           <button
             type="button"
             onClick={() => setContactOpen(true)}
             className={[navItemBase, contactOpen ? navItemActive : ""].join(" ")}
           >
-            Contact
+            {t.contact}
           </button>
         </div>
 
-        <div className="md:hidden w-full flex items-center justify-end">
+        <div className="md:hidden w-full flex items-center justify-end gap-2">
           <button
             type="button"
             onClick={() => setMobileMenuOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-xl border border-[var(--border)] bg-primary/10 p-2.5 text-secondary hover:bg-primary/20 transition-colors"
+            className="paper-button inline-flex items-center justify-center rounded-2xl p-2.5 text-[var(--foreground)] transition-transform"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
           >
@@ -80,15 +98,15 @@ export function HeaderNav() {
 
       {mobileMenuOpen ? (
         <div className="md:hidden container mx-auto px-3 pb-3">
-          <div className="rounded-2xl border border-[var(--border)] bg-black/40 backdrop-blur p-2 grid gap-2">
-            <a href="/" onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
-              Home
+          <div className="rounded-3xl border-2 border-[var(--border)] bg-[var(--background)] p-2 grid gap-2 shadow-[var(--shadow)]">
+            <a href={hrefHome} onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
+              {t.home}
             </a>
-            <a href="/#projects" onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
-              My work
+            <a href={hrefProjects} onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
+              {t.work}
             </a>
-            <a href="/resume" onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
-              Resume
+            <a href={hrefResume} onClick={() => setMobileMenuOpen(false)} className={navItemBase}>
+              {t.resume}
             </a>
             <button
               type="button"
@@ -98,7 +116,7 @@ export function HeaderNav() {
               }}
               className={[navItemBase, contactOpen ? navItemActive : ""].join(" ")}
             >
-              Contact
+              {t.contact}
             </button>
           </div>
         </div>
@@ -106,7 +124,7 @@ export function HeaderNav() {
 
       {contactOpen ? (
         <div
-          className="fixed inset-0 z-[80] bg-black/70 p-4 md:p-8 flex items-center justify-center"
+          className="fixed inset-0 z-[80] bg-black/50 p-4 md:p-8 flex items-center justify-center"
           role="dialog"
           aria-modal="true"
           aria-label="Contact"
@@ -114,16 +132,16 @@ export function HeaderNav() {
             if (e.target === e.currentTarget) setContactOpen(false);
           }}
         >
-          <div className="w-full max-w-2xl rounded-2xl border border-[var(--border)] bg-background shadow-xl overflow-hidden">
-            <div className="px-5 py-4 border-b border-[var(--border)] flex items-start justify-between gap-4">
+          <div className="paper-card w-full max-w-2xl rounded-3xl overflow-hidden bg-[var(--background)]">
+            <div className="px-5 py-4 border-b-2 border-[var(--border)] flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <p className="text-secondary font-semibold text-lg">Contact me!</p>
-                <p className="text-sm text-white/60 mt-1">Send me a message and I’ll get back to you.</p>
+                <p className="text-secondary font-semibold text-lg">{t.contactTitle}</p>
+                <p className="text-sm text-[var(--text-subtle)] mt-1">{t.contactSubtitle}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setContactOpen(false)}
-                className="px-3 py-2 rounded-xl bg-muted/60 border border-[var(--border)] text-secondary/90 hover:bg-muted/90 transition-colors"
+                className="paper-button px-3 py-2 rounded-2xl text-[var(--foreground)]"
               >
                 Close
               </button>
@@ -133,32 +151,32 @@ export function HeaderNav() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="rounded-xl border border-[var(--border)] bg-primary/10 hover:bg-primary/15 transition-colors p-4"
+                  className="paper-card-2 rounded-3xl p-4 hover:opacity-95 transition-opacity"
                 >
-                  <p className="text-sm font-semibold text-secondary">Email</p>
-                  <p className="text-sm text-white/70 mt-1 break-all">{CONTACT_EMAIL}</p>
+                  <p className="text-sm font-semibold text-secondary">{t.email}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-1 break-all">{CONTACT_EMAIL}</p>
                 </a>
                 <a
                   href={CONTACT_LINKEDIN}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border border-[var(--border)] bg-primary/10 hover:bg-primary/15 transition-colors p-4"
+                  className="paper-card-2 rounded-3xl p-4 hover:opacity-95 transition-opacity"
                 >
-                  <p className="text-sm font-semibold text-secondary">LinkedIn</p>
-                  <p className="text-sm text-white/70 mt-1 break-all">{CONTACT_LINKEDIN}</p>
+                  <p className="text-sm font-semibold text-secondary">{t.linkedin}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-1 break-all">{CONTACT_LINKEDIN}</p>
                 </a>
               </div>
 
-              <div className="rounded-2xl border border-[var(--border)] bg-muted/25 p-4">
-                <p className="text-sm font-semibold text-secondary">Send me a message</p>
-                <p className="mt-2 text-sm text-white/70 leading-relaxed">
-                  Clicking the button below will open your email app, so you can write a message to me.
+              <div className="paper-card-2 rounded-3xl p-4">
+                <p className="text-sm font-semibold text-secondary">{t.sendMessage}</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">
+                  {t.openEmailHint}
                 </p>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="mt-4 inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold bg-secondary text-black hover:opacity-90 transition-opacity"
+                  className="paper-button mt-4 inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-[var(--foreground)]"
                 >
-                  Open email app
+                  {t.openEmail}
                 </a>
               </div>
             </div>

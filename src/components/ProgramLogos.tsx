@@ -4,7 +4,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Photoshop',
     description: 'Image editing and design.',
     svg: (
-      <img src="/icons/adobe-photoshop.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/adobe-photoshop.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -12,7 +12,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Illustrator',
     description: 'Vector graphics and illustration.',
     svg: (
-      <img src="/icons/adobe-illustrator.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/adobe-illustrator.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -20,7 +20,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'InDesign',
     description: 'Layout and publishing.',
     svg: (
-      <img src="/icons/adobe-indesign.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/adobe-indesign.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -28,7 +28,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Figma',
     description: 'UI/UX design and prototyping.',
     svg: (
-      <img src="/icons/figma.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/figma.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -36,7 +36,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Claude AI',
     description: 'AI assistant for writing and coding.',
     svg: (
-      <img src="/icons/claude-ai.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/claude-ai.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -44,7 +44,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Cursor',
     description: 'AI-powered code editor.',
     svg: (
-      <img src="/icons/cursor.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/cursor.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -52,7 +52,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Tinkercad',
     description: '3D modeling for printing and design.',
     svg: (
-      <img src="/icons/tinkercad.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/tinkercad.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
   {
@@ -60,7 +60,7 @@ const logos: { id: string; title: string; description: string; svg: React.ReactN
     title: 'Shopify',
     description: 'E-commerce platform for online stores.',
     svg: (
-      <img src="/icons/shopify.svg" alt="" className="w-full h-full" aria-hidden />
+      <img src="/icons/shopify.svg" alt="" className="w-full h-full ink-icon" aria-hidden />
     ),
   },
 ];
@@ -84,7 +84,7 @@ export function ProgramLogos() {
               <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/20 border border-[var(--border)] flex-shrink-0">
                 <span className="w-6 h-6 block [&>img]:w-full [&>img]:h-full">{svg}</span>
               </span>
-              <p className="text-xs text-white/90 text-center leading-snug">
+              <p className="text-xs text-[var(--text-muted)] text-center leading-snug">
                 {description}
               </p>
             </div>
@@ -98,7 +98,7 @@ export function ProgramLogos() {
           >
             <span className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 block [&>img]:w-full [&>img]:h-full">{svg}</span>
           </span>
-          <span className="text-sm text-white/80 text-center leading-tight" aria-hidden>
+          <span className="text-sm text-[var(--text-muted)] text-center leading-tight" aria-hidden>
             {title}
           </span>
         </div>

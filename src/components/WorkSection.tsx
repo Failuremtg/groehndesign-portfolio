@@ -37,9 +37,9 @@ function PdfCard({
         className="block p-4 w-full text-left hover:bg-muted/70 transition-colors"
       >
         <PdfThumbnail pdfUrl={pdfUrl} alt={project.title} />
-        <h3 className="font-semibold text-secondary">{project.title}</h3>
-        <p className="mt-1 text-sm opacity-80">{project.description}</p>
-        <p className="mt-2 text-sm text-secondary">View slides →</p>
+        <h3 className="font-semibold text-[var(--foreground)]">{project.title}</h3>
+        <p className="mt-1 text-sm text-[var(--text-muted)]">{project.description}</p>
+        <p className="mt-2 text-sm text-[var(--foreground)]">View slides →</p>
       </button>
     </li>
   );
@@ -56,8 +56,8 @@ export function WorkSection({ id }: WorkSectionProps) {
 
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
-      <h2 className="text-2xl font-bold md:text-3xl text-secondary">Work</h2>
-      <p className="mt-2 opacity-80">
+      <h2 className="text-2xl font-bold md:text-3xl text-[var(--foreground)]">Work</h2>
+      <p className="mt-2 text-[var(--text-muted)]">
         Selection of projects. Add PDFs in `public/work/` and list them in `src/data/work.ts`.
       </p>
 
@@ -68,7 +68,7 @@ export function WorkSection({ id }: WorkSectionProps) {
 
           return (
             <div key={category}>
-              <h3 className="text-lg font-semibold text-secondary mb-4">{category}</h3>
+              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4">{category}</h3>
               <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {categoryProjects.map((project) => (
                   <PdfCard key={project.id} project={project} onOpen={setActiveProject} />

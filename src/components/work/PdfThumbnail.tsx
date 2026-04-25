@@ -14,7 +14,7 @@ export function PdfThumbnail({
 
   return (
     <div
-      className="aspect-video bg-muted rounded mb-4 flex items-center justify-center overflow-hidden text-secondary/80 relative"
+      className="aspect-video bg-[var(--muted)] border-2 border-[var(--border)] rounded-2xl mb-4 flex items-center justify-center overflow-hidden text-[var(--text-muted)] relative"
       aria-label={alt}
       role="img"
     >
@@ -25,7 +25,7 @@ export function PdfThumbnail({
         onLoad={() => setLoaded(true)}
       />
       {!loaded ? (
-        <div className="absolute inset-0 flex items-center justify-center text-sm opacity-80 bg-muted/20">
+        <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--text-muted)] bg-[var(--muted-2)]">
           Loading…
         </div>
       ) : null}

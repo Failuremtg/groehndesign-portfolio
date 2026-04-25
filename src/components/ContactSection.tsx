@@ -5,16 +5,18 @@ interface ContactSectionProps {
 export function ContactSection({ id }: ContactSectionProps) {
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
-      <h2 className="text-2xl font-bold md:text-3xl text-secondary">Contact me!</h2>
-      <p className="mt-2 opacity-80">Get in touch</p>
+      <h2 className="text-2xl font-bold md:text-3xl text-[var(--foreground)]">Let’s work together</h2>
+      <p className="mt-2 text-[var(--text-muted)]">
+        Open to internships, junior UX roles, freelance projects, and collaboration.
+      </p>
       <ul className="mt-6 flex flex-wrap gap-4">
         <li>
           <a
             href="mailto:alexanderbghenriksen@gmail.com"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary/10 border border-[var(--border)] px-4 py-2.5 text-sm text-secondary hover:bg-primary/20 transition-all hover:-translate-y-0.5"
+            className="paper-button inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm text-[var(--foreground)] transition-all hover:-translate-y-0.5"
           >
             <svg
-              className="w-4 h-4 text-secondary"
+              className="w-4 h-4 text-[var(--foreground)]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -31,10 +33,10 @@ export function ContactSection({ id }: ContactSectionProps) {
             href="https://www.linkedin.com/in/alexander-henriksen-298699383/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary/10 border border-[var(--border)] px-4 py-2.5 text-sm text-secondary hover:bg-primary/20 transition-all hover:-translate-y-0.5"
+            className="paper-button inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm text-[var(--foreground)] transition-all hover:-translate-y-0.5"
           >
             <svg
-              className="w-4 h-4 text-secondary"
+              className="w-4 h-4 text-[var(--foreground)]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

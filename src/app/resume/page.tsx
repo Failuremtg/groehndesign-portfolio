@@ -1,30 +1,16 @@
-import Link from 'next/link';
 import { ProgramLogos } from '@/components/ProgramLogos';
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0f0a14]">
-      <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[#0f0a14] px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="text-secondary hover:text-secondary-hover transition-colors">
-          ← Home
-        </Link>
-        <h1 className="text-lg font-semibold text-secondary">Resume</h1>
-        <div className="text-sm text-secondary/70" aria-hidden>
-          {/*
-            Keep this as a dedicated page (no iframe / pop-up).
-            If you later want a PDF download, we can add a button back.
-          */}
-          Portfolio site resume
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-[var(--background)]">
       <main className="flex-1 p-4">
         <div className="container mx-auto max-w-4xl py-10 md:py-14" id="resume-print-area">
-          <section className="rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-8">
+          <section className="paper-card rounded-3xl p-6 md:p-8">
             <div className="flex items-start justify-between gap-6 flex-wrap">
               <div className="flex items-start gap-6 min-w-[260px]">
                 <div className="min-w-[220px]">
                   <h2 className="text-2xl md:text-3xl font-bold text-secondary">Alexander B. Henriksen</h2>
-                  <p className="mt-2 text-sm text-white/60">
+                  <p className="mt-2 text-sm text-[var(--text-subtle)]">
                     Multimedia designer student • UX design • Vite coding • Event cordinator • Educator
                   </p>
                   <div className="mt-4">
@@ -35,9 +21,9 @@ export default function ResumePage() {
             </div>
           </section>
 
-          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
+          <section className="mt-8 paper-card rounded-3xl p-6 md:p-7">
             <h3 className="text-lg font-semibold text-secondary">Skills</h3>
-            <ul className="mt-5 text-sm text-white/80 list-disc pl-5 space-y-2">
+            <ul className="mt-5 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-2">
               <li>UX design, user research, and user journey mapping</li>
               <li>Prototyping, ideation, and translating insights into design solutions</li>
               <li>AI-assisted product development (e.g. Cursor, Claude) for prototyping and build</li>
@@ -46,14 +32,14 @@ export default function ResumePage() {
             </ul>
           </section>
 
-          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
+          <section className="mt-8 paper-card rounded-3xl p-6 md:p-7">
             <h3 className="text-lg font-semibold text-secondary">Work experience</h3>
             <div className="mt-5 space-y-6">
               <article>
                 <p className="font-medium text-secondary/90">Nærumgaard - Caretaker</p>
-                <p className="text-sm text-white/60">2011–2014</p>
-                <p className="mt-2 text-sm text-white/70">Take care of children and youngsters with autism and other mental disabilities.</p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <p className="text-sm text-[var(--text-subtle)]">2011–2014</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Take care of children and youngsters with autism and other mental disabilities.</p>
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Nightguard</li>
                   <li>Activity planner</li>
                 </ul>
@@ -61,9 +47,9 @@ export default function ResumePage() {
 
               <article>
                 <p className="font-medium text-secondary/90">Eventyrridderne - &quot;Børnetæmmer&quot; Event worker</p>
-                <p className="text-sm text-white/60">2015–2016</p>
-                <p className="mt-2 text-sm text-white/70">Create and execute events for children ages 9–15.</p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <p className="text-sm text-[var(--text-subtle)]">2015–2016</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Create and execute events for children ages 9–15.</p>
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Planning events</li>
                   <li>Play roles/characters in events</li>
                 </ul>
@@ -71,9 +57,9 @@ export default function ResumePage() {
 
               <article>
                 <p className="font-medium text-secondary/90">Faraos Cigarer As - Part Time</p>
-                <p className="text-sm text-white/60">2017–2020</p>
-                <p className="mt-2 text-sm text-white/70">Stocking shelves, customer relations, and cashier work.</p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <p className="text-sm text-[var(--text-subtle)]">2017–2020</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Stocking shelves, customer relations, and cashier work.</p>
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Working at the counter</li>
                   <li>Taking care of customers coming in the shop</li>
                 </ul>
@@ -81,18 +67,18 @@ export default function ResumePage() {
 
               <article>
                 <p className="font-medium text-secondary/90">Utterslev skole - Substitute Teacher</p>
-                <p className="text-sm text-white/60">2018–2019</p>
-                <p className="mt-2 text-sm text-white/70">Teacher for all grades in primary English and social studies.</p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <p className="text-sm text-[var(--text-subtle)]">2018–2019</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Teacher for all grades in primary English and social studies.</p>
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Teaching and social training</li>
                 </ul>
               </article>
 
               <article>
                 <p className="font-medium text-secondary/90">Faraos Cigarer As - Full time Department responsible</p>
-                <p className="text-sm text-white/60">2020–2023</p>
-                <p className="mt-2 text-sm text-white/70">Ordering stock, B2B relations, keeping track of stock, cashier and customer relations.</p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <p className="text-sm text-[var(--text-subtle)]">2020–2023</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Ordering stock, B2B relations, keeping track of stock, cashier and customer relations.</p>
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Creating growth in the department</li>
                   <li>Daily retail tasks</li>
                 </ul>
@@ -100,11 +86,11 @@ export default function ResumePage() {
 
               <article>
                 <p className="font-medium text-secondary/90">Sputnik skolerne - Teacher</p>
-                <p className="text-sm text-white/60">2023–2024</p>
-                <p className="mt-2 text-sm text-white/70">
+                <p className="text-sm text-[var(--text-subtle)]">2023–2024</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">
                   Special education teacher with expertise in nerdy culture and social training.
                 </p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Teaching ages 11–18</li>
                   <li>Directing social events and classes</li>
                 </ul>
@@ -112,9 +98,9 @@ export default function ResumePage() {
 
               <article>
                 <p className="font-medium text-secondary/90">Luftens Helte Band - Merchandise seller (volunteer work)</p>
-                <p className="text-sm text-white/60">2023–now</p>
-                <p className="mt-2 text-sm text-white/70">Merchandise coordinator and sales person.</p>
-                <ul className="mt-2 text-sm text-white/70 list-disc pl-5 space-y-1">
+                <p className="text-sm text-[var(--text-subtle)]">2023–now</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Merchandise coordinator and sales person.</p>
+                <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
                   <li>Setting up merchandise for concerts</li>
                   <li>Manning the stand during concerts</li>
                 </ul>
@@ -122,25 +108,25 @@ export default function ResumePage() {
             </div>
           </section>
 
-          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-7">
+          <section className="mt-8 paper-card rounded-3xl p-6 md:p-7">
             <h3 className="text-lg font-semibold text-secondary">Education</h3>
             <div className="mt-5 space-y-5">
               <div>
                 <p className="font-medium text-secondary/90">VUC HILLERØD (HF)</p>
-                <p className="text-sm text-white/60">2015–2017</p>
+                <p className="text-sm text-[var(--text-subtle)]">2015–2017</p>
               </div>
               <div>
                 <p className="font-medium text-secondary/90">Læreruddanelsen KP København</p>
-                <p className="text-sm text-white/60">2017–2020</p>
+                <p className="text-sm text-[var(--text-subtle)]">2017–2020</p>
               </div>
               <div>
                 <p className="font-medium text-secondary/90">EK Lyngby - Multimedie design</p>
-                <p className="text-sm text-white/60">2024–now</p>
+                <p className="text-sm text-[var(--text-subtle)]">2024–now</p>
               </div>
             </div>
           </section>
 
-          <section className="mt-6 rounded-2xl border border-[var(--border)] bg-muted/25 p-6 md:p-8">
+          <section className="mt-6 paper-card rounded-3xl p-6 md:p-8">
             <h3 className="text-lg font-semibold text-secondary">Contact</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <a

@@ -14,8 +14,8 @@ function ClickToExpandHint({ className }: { className?: string }) {
       ].join(' ')}
       aria-hidden
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
-      <div className="absolute bottom-3 right-3 flex items-center gap-2 rounded-full bg-black/50 border border-white/10 px-3 py-1.5 text-xs text-white/90 backdrop-blur">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-black/0" />
+      <div className="absolute bottom-3 right-3 flex items-center gap-2 rounded-full bg-[var(--muted)] border-2 border-[var(--border)] px-3 py-1.5 text-xs text-[var(--foreground)] shadow-sm">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-90">
           <path
             d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z"
@@ -29,7 +29,7 @@ function ClickToExpandHint({ className }: { className?: string }) {
             strokeLinecap="round"
           />
         </svg>
-        <span>Click to expand</span>
+        <span>Click to view</span>
       </div>
     </div>
   );
@@ -110,6 +110,10 @@ const clarivoImages = [
 
 const noyerOverwatchImages = [
   {
+    src: '/projects/noyer-overwatch/00-logo.png',
+    alt: 'Noyer Overwatch logo',
+  },
+  {
     src: '/projects/noyer-overwatch/01-tracked-sales.png',
     alt: 'Noyer Overwatch dashboard - tracked sales',
   },
@@ -123,493 +127,366 @@ const noyerOverwatchImages = [
   },
 ];
 
-export function ProjectsSection({ id }: { id: string }) {
-  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
-  const [activeImage, setActiveImage] = useState<(typeof oakedexImages)[number]>(oakedexImages[0]!);
-  const [activeCmdrtoolsImage, setActiveCmdrtoolsImage] = useState<(typeof cmdrtoolsImages)[number]>(
-    cmdrtoolsImages[0]!,
-  );
-  const [activeClarivoImage, setActiveClarivoImage] = useState<(typeof clarivoImages)[number]>(
-    clarivoImages[0]!,
-  );
-  const [clarivoLogoSrc, setClarivoLogoSrc] = useState('/projects/clarivo/00-logo.png');
-  const [activeNoyerOverwatchImage, setActiveNoyerOverwatchImage] = useState<
-    (typeof noyerOverwatchImages)[number]
-  >(noyerOverwatchImages[0]!);
+type ProjectsContent = {
+  headline?: string;
+  intro?: string;
+  items?: {
+    key?: string;
+    title?: string;
+    subtitle?: string;
+    summary?: string;
+    tools?: string[];
+    sections?: {
+      problem?: string;
+      role?: string;
+      process?: string;
+      solutionBullets?: string[];
+      outcome?: string;
+    };
+  }[];
+};
+
+function getProjectCopy(content: ProjectsContent | undefined, key: string) {
+  const item = content?.items?.find((i) => i.key === key);
+  return {
+    title: item?.title,
+    subtitle: item?.subtitle,
+    summary: item?.summary,
+    tools: item?.tools,
+    sections: {
+      problem: item?.sections?.problem,
+      role: item?.sections?.role,
+      process: item?.sections?.process,
+      solutionBullets: item?.sections?.solutionBullets,
+      outcome: item?.sections?.outcome,
+    },
+  };
+}
+
+export function ProjectsSection({ id, content }: { id: string; content?: ProjectsContent }) {
+  const [selected, setSelected] = useState<{
+    projectKey: 'oakedex' | 'cmdrtools' | 'clarivo' | 'noyer-overwatch';
+    imageSrc: string;
+  } | null>(null);
+
+  const isLogoLikeImage = (src: string) =>
+    /logo\.(png|jpg|jpeg|webp)$/i.test(src) || /(^|\/)00-.*logo.*\.(png|jpg|jpeg|webp)$/i.test(src);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedImage(null);
+      if (e.key === 'Escape') setSelected(null);
+      if (!selected) return;
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+
+      const direction = e.key === 'ArrowRight' ? 1 : -1;
+      const project = projects.find((p) => p.key === selected.projectKey);
+      if (!project) return;
+      const idx = project.images.findIndex((img) => img.src === selected.imageSrc);
+      const nextIdx = (idx + direction + project.images.length) % project.images.length;
+      const next = project.images[nextIdx];
+      if (next) setSelected({ projectKey: selected.projectKey, imageSrc: next.src });
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, []);
+  }, [selected]);
+
+  const sectionHeadline = content?.headline;
+  const sectionIntro = content?.intro;
+  const oakedex = getProjectCopy(content, 'oakedex');
+  const cmdrtools = getProjectCopy(content, 'cmdrtools');
+  const clarivo = getProjectCopy(content, 'clarivo');
+  const noyer = getProjectCopy(content, 'noyer-overwatch');
+
+  const oakedexTools = oakedex.tools?.length ? oakedex.tools : ['UX research', 'Figma', 'React', 'TCG APIs'];
+  const cmdrtoolsTools = cmdrtools.tools?.length ? cmdrtools.tools : ['UX design', 'Expo', 'React Native', 'Firebase'];
+  const clarivoTools = clarivo.tools?.length ? clarivo.tools : ['Prompting', 'TypeScript', 'UI design', 'AI APIs'];
+  const noyerTools = noyer.tools?.length ? noyer.tools : ['Product framing', 'Node.js', 'Express', 'Shopify/e-conomic'];
+
+  const projects = [
+    {
+      key: 'oakedex' as const,
+      title: oakedex.title || 'Oakedex',
+      subtitle: oakedex.subtitle || 'Digital Pokémon TCG binder app',
+      summary:
+        oakedex.summary ||
+        'A digital binder that helps collectors track and organize Pokémon cards across master sets and single‑Pokémon binders.',
+      tools: oakedexTools,
+      images: oakedexImages,
+      sections: {
+        problem:
+          oakedex.sections.problem ||
+          'Collectors track multiple sets and single‑Pokémon binders—and quickly lose overview. The product needed fast browsing, clear progress feedback, and low-friction updates.',
+        role:
+          oakedex.sections.role ||
+          'UX + product decisions, interaction design, and implementation (React). Wireframes in Figma → responsive UI and reusable components.',
+        outcome:
+          oakedex.sections.outcome ||
+          'A complete end-to-end prototype with real flows and UI states. Key learning: small state design decisions (variants, missing prints) drive perceived quality for collectors.',
+        process:
+          oakedex.sections.process ||
+          'Started with core flows (browse → find missing → update), designed key states (owned / missing / variants), then iterated the UI with tight feedback loops in code.',
+        solutionBullets:
+          oakedex.sections.solutionBullets?.length
+            ? oakedex.sections.solutionBullets
+            : [
+                'Binder collections with progress tracking',
+                'Card selection modals for variant handling',
+                'Clear hierarchy + fast daily mobile usage',
+              ],
+      },
+    },
+    {
+      key: 'cmdrtools' as const,
+      title: cmdrtools.title || 'CMDRtools',
+      subtitle: cmdrtools.subtitle || 'Commander deck & match tracker',
+      summary:
+        cmdrtools.summary ||
+        'A companion app for Commander players to organize decks, track games, and capture match results with low friction.',
+      tools: cmdrtoolsTools,
+      images: cmdrtoolsImages,
+      sections: {
+        problem:
+          cmdrtools.sections.problem ||
+          'Commander nights are busy—tracking games and stats often becomes a distraction. The app needed quick setup, big tap targets, and useful history without friction.',
+        role:
+          cmdrtools.sections.role ||
+          'UX design + interaction patterns + implementation. Focused on mobile-first flows for real-time use.',
+        outcome:
+          cmdrtools.sections.outcome ||
+          'A usable mobile companion with repeatable flows and a structured data model for decks + history.',
+        process:
+          cmdrtools.sections.process ||
+          'Sketched flows in Figma, then built and refined components in Expo/React Native to reduce taps and keep the “game night” experience lightweight.',
+        solutionBullets:
+          cmdrtools.sections.solutionBullets?.length
+            ? cmdrtools.sections.solutionBullets
+            : ['Deck organization and quick access during play', 'Match tracking designed for speed', 'Clear, consistent UI'],
+      },
+    },
+    {
+      key: 'clarivo' as const,
+      title: clarivo.title || 'Clarivo',
+      subtitle: clarivo.subtitle || 'AI “parent insight” guide for games & slang',
+      summary:
+        clarivo.summary ||
+        'Helps parents understand online games, slang, and trends with calm explanations and conversation starters.',
+      tools: clarivoTools,
+      images: clarivoImages,
+      sections: {
+        problem:
+          clarivo.sections.problem ||
+          'Parents hear game slang and trends but don’t know how to respond. They need calm explanations and conversation starters—fast, without feeling judged.',
+        role:
+          clarivo.sections.role ||
+          'UX + tone-of-voice, prompt design, and UI implementation. Designed a structured result format.',
+        outcome:
+          clarivo.sections.outcome ||
+          'A friendly AI-powered guide with safe fallbacks and repeatable structure. Learning: tone and structure matter as much as accuracy when trust is the product.',
+        process:
+          clarivo.sections.process ||
+          'Iterated prompts and UI together: example chips reduce blank-state friction, structured output improves consistency, and history/favorites support repeat use.',
+        solutionBullets:
+          clarivo.sections.solutionBullets?.length
+            ? clarivo.sections.solutionBullets
+            : ['Example prompts reduce friction', 'Structured results for clarity', 'Favorites and history for revisits'],
+      },
+    },
+    {
+      key: 'noyer-overwatch' as const,
+      title: noyer.title || 'Noyer Overwatch',
+      subtitle:
+        noyer.subtitle ||
+        'Internship project • Sales alert dashboard for noyer.dk',
+      summary:
+        noyer.summary ||
+        'An automated sales alert robot that monitors open sales across systems and emails the team when something needs attention.',
+      tools: noyerTools,
+      images: noyerOverwatchImages,
+      sections: {
+        problem:
+          noyer.sections.problem ||
+          'Sales follow-up can slip when orders sit too long across systems. The team needed a simple daily overview and proactive alerts based on per-item thresholds.',
+        role:
+          noyer.sections.role ||
+          'Internship project: product framing, dashboard UX, and full-stack implementation (Node.js + Express).',
+        outcome:
+          noyer.sections.outcome ||
+          'A working internal tool with automated alerts and a clear dashboard for follow-up.',
+        process:
+          noyer.sections.process ||
+          'Mapped workflow, defined urgency rules, then built a dashboard optimized for quick daily checks. Iterated rules and UI together to keep alerts trustworthy.',
+        solutionBullets:
+          noyer.sections.solutionBullets?.length
+            ? noyer.sections.solutionBullets
+            : ['Unified sales model across systems', 'Per-item thresholds + unit conversion', 'Alert archive + restore workflow'],
+      },
+    },
+  ];
 
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
       <header className="mb-8 md:mb-10">
-        <h2 className="text-2xl font-bold md:text-3xl text-secondary">Projects</h2>
-        <p className="mt-2 opacity-80">A few things I’ve built and designed.</p>
+        <h2
+          className="text-2xl font-bold md:text-3xl text-[var(--foreground)]"
+          style={{ fontFamily: 'var(--font-display), serif' }}
+        >
+          {sectionHeadline || 'Projects'}
+        </h2>
+        <p className="mt-2 text-[var(--text-muted)] leading-relaxed max-w-3xl">
+          {sectionIntro || (
+            <>
+              A quick visual preview first. Click any project to view a larger gallery.
+            </>
+          )}
+        </p>
       </header>
 
-      <article className="rounded-2xl border border-[var(--border)] bg-muted/25 overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-2">
-          <div className="p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/projects/oakedex/00-app-icon.png"
-                alt="Oakedex logo"
-                width={150}
-                height={50}
-                className="h-10 w-auto object-contain"
-              />
-              <div>
-                <h3 className="text-xl font-semibold text-secondary">Oakedex</h3>
-                <p className="text-sm text-white/60">Digital Pokémon TCG binder app</p>
-              </div>
-            </div>
-
-            <p className="mt-5 text-sm text-white/85 leading-relaxed">
-              Oakedex is a digital binder that helps collectors track and organize Pokémon cards
-              across master sets and single‑Pokémon binders. The app focuses on fast browsing,
-              clear progress feedback, and frictionless “missing card” flows.
-            </p>
-
-            <div className="mt-5 grid gap-3">
-              <div className="rounded-xl border border-[var(--border)] bg-primary/10 p-4">
-                <p className="text-sm font-semibold text-secondary">How it was built (Vite workflow)</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  Built with a modern React + Vite development setup for fast iteration and tight
-                  feedback loops. Components and UI states were developed incrementally with a
-                  focus on reusable patterns, responsive layouts, and clean data flows. The basic
-                  layout was first structured as wireframes in Figma before implementation.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Product thinking & UX approach</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The project started from a clear collector problem: tracking multiple collections
-                  without losing overview. I designed the flows around quick recognition (visual
-                  cards + progress indicators), low-friction updates (single-tap collect actions),
-                  and clear states for missing variants and special prints.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Architecture & implementation</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  I structured the app around reusable UI components and predictable state handling,
-                  so binder screens, modal flows, and card grids could share logic. The Vite-based
-                  setup made iteration fast during feature spikes, while still keeping the codebase
-                  maintainable as the number of collections and card states grew.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Highlights</p>
-                <ul className="mt-2 text-sm text-white/75 leading-relaxed list-disc pl-5 space-y-1">
-                  <li>Binder collections with progress tracking</li>
-                  <li>Card selection modals for variant handling</li>
-                  <li>Consistent dark UI with clear hierarchy</li>
-                  <li>Designed for fast daily collector usage on mobile</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t md:border-t-0 md:border-l border-[var(--border)] bg-background/30 p-6 md:p-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {projects.map((p) => {
+          const cover = p.images[0];
+          if (!cover) return null;
+          const coverIsLogo = isLogoLikeImage(cover.src);
+          return (
             <button
+              key={p.key}
               type="button"
-              onClick={() => setSelectedImage(activeImage)}
-              className="group relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--border)] bg-muted/30 text-left"
+              onClick={() => setSelected({ projectKey: p.key, imageSrc: cover.src })}
+              className="paper-card group relative overflow-hidden rounded-3xl text-left"
             >
-              <Image
-                src={activeImage.src}
-                alt={activeImage.alt}
-                fill
-                className="object-cover hover:scale-[1.01] transition-transform"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority={false}
-              />
-              <ClickToExpandHint />
+              <div className="relative aspect-[4/5] w-full">
+                <Image
+                  src={cover.src}
+                  alt={cover.alt}
+                  fill
+                  className={[
+                    'transition-transform duration-200 group-hover:scale-[1.01]',
+                    coverIsLogo ? 'object-contain p-6 bg-[var(--background)]' : 'object-cover',
+                  ].join(' ')}
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <ClickToExpandHint />
+              </div>
+              <div className="border-t-2 border-[var(--border)] bg-[var(--muted)] p-3">
+                <p className="text-sm font-semibold text-[var(--foreground)] leading-snug">{p.title}</p>
+                <p className="mt-0.5 text-xs text-[var(--text-subtle)] leading-snug line-clamp-2">{p.subtitle}</p>
+              </div>
             </button>
+          );
+        })}
+      </div>
 
-            <div className="mt-4 grid grid-cols-3 sm:grid-cols-6 gap-3">
-              {oakedexImages.map((img) => (
-                <button
-                  type="button"
-                  key={img.src}
-                  onClick={() => setActiveImage(img)}
-                  className={`relative aspect-[3/4] rounded-xl overflow-hidden border bg-muted/30 hover:opacity-90 transition-opacity ${
-                    activeImage.src === img.src ? 'border-secondary' : 'border-[var(--border)]'
-                  }`}
-                  title="Open image"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 20vw, 10vw"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-2">
-          <div className="p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <Image
-                src={cmdrtoolsImages[0]!.src}
-                alt="CMDRtools logo"
-                width={64}
-                height={64}
-                className="h-11 w-11 rounded-2xl border border-[var(--border)] bg-primary/10 object-contain p-1.5"
-              />
-              <div>
-                <h3 className="text-xl font-semibold text-secondary">CMDRtools</h3>
-                <p className="text-sm text-white/60">Commander deck & match tracker</p>
-              </div>
-            </div>
-
-            <p className="mt-5 text-sm text-white/85 leading-relaxed">
-              CMDRtools is a companion app for Magic: The Gathering Commander players. It helps you
-              organize decks, track games, and capture match results in a way that supports both
-              casual playgroups and more structured sessions.
-            </p>
-
-            <div className="mt-5 grid gap-3">
-              <div className="rounded-xl border border-[var(--border)] bg-primary/10 p-4">
-                <p className="text-sm font-semibold text-secondary">How it was built</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  Built as a mobile-first product with a fast iteration workflow and reusable UI
-                  components. Data is modeled around decks, playgroups, and match history to keep
-                  the core flows simple and quick to use during game nights. The basic layout was
-                  initially designed as wireframes in Figma.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Product thinking & UX approach</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The UX is designed for “in-the-moment” interaction: large tap targets, minimal
-                  friction, and clear information hierarchy. The goal is to make tracking feel
-                  effortless while still producing useful stats and history after the game.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Architecture & implementation</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The app is structured around reusable feature modules for decks, match tracking,
-                  player setup, and statistics. Shared UI components keep the experience consistent
-                  across screens, while the data model is organized to support quick updates during
-                  live games and reliable history views afterwards.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Highlights</p>
-                <ul className="mt-2 text-sm text-white/75 leading-relaxed list-disc pl-5 space-y-1">
-                  <li>Deck organization and quick access during play</li>
-                  <li>Match tracking flows designed for speed</li>
-                  <li>Clear, consistent UI built for dark environments</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t md:border-t-0 md:border-l border-[var(--border)] bg-background/30 p-6 md:p-8">
-            <button
-              type="button"
-              onClick={() => setSelectedImage(activeCmdrtoolsImage)}
-              className="group relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--border)] bg-muted/30 text-left"
-            >
-              <Image
-                src={activeCmdrtoolsImage.src}
-                alt={activeCmdrtoolsImage.alt}
-                fill
-                className="object-cover hover:scale-[1.01] transition-transform"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <ClickToExpandHint />
-            </button>
-
-            <div className="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-3">
-              {cmdrtoolsImages.map((img) => (
-                <button
-                  type="button"
-                  key={img.src}
-                  onClick={() => setActiveCmdrtoolsImage(img)}
-                  className={`relative aspect-[3/4] rounded-xl overflow-hidden border bg-muted/30 hover:opacity-90 transition-opacity ${
-                    activeCmdrtoolsImage.src === img.src ? 'border-secondary' : 'border-[var(--border)]'
-                  }`}
-                  title="Open image"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 20vw, 10vw"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-2">
-          <div className="p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <Image
-                src={clarivoLogoSrc}
-                alt="Clarivo logo"
-                width={64}
-                height={64}
-                className="h-11 w-11 object-contain"
-                onError={() => setClarivoLogoSrc('/projects/clarivo/01-home.png')}
-              />
-              <div>
-                <h3 className="text-xl font-semibold text-secondary">Clarivo</h3>
-                <p className="text-sm text-white/60">AI “parent insight” guide for games & slang</p>
-              </div>
-            </div>
-
-            <p className="mt-5 text-sm text-white/85 leading-relaxed">
-              Clarivo helps parents understand the online games, hobbies, trends, and slang their
-              child talks about. You can type a word or phrase (for example something you heard at
-              the dinner table), and Clarivo returns a calm explanation plus conversation starters
-              so parents can connect without sounding out of touch.
-            </p>
-
-            <div className="mt-5 grid gap-3">
-              <div className="rounded-xl border border-[var(--border)] bg-primary/10 p-4">
-                <p className="text-sm font-semibold text-secondary">How it was built</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  Built as an Expo React Native app (Expo Router) with a component-driven UI system.
-                  The basic layout was first structured as wireframes in Figma before implementation.
-                  Insights are generated with Claude AI, with mock insights and a safe fallback when
-                  AI is unavailable.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Product thinking & UX approach</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The tone is intentionally calm, warm, and non-alarmist. The UX supports quick “help
-                  me understand this” moments: short answers, plain language, and actionable
-                  conversation starters—so it feels supportive rather than judgmental.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Architecture & implementation</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The app is structured around a clear “parent insight” module: prompt building,
-                  JSON-shaped responses (what it is / why kids care / conversation starters), and
-                  small UI components for consistent presentation. Search history and favorites are
-                  stored locally so parents can revisit insights later.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Highlights</p>
-                <ul className="mt-2 text-sm text-white/75 leading-relaxed list-disc pl-5 space-y-1">
-                  <li>Ask screen with example prompts to reduce friction</li>
-                  <li>Results designed for clarity + conversation starters</li>
-                  <li>Favorites and history for quick revisits</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t md:border-t-0 md:border-l border-[var(--border)] bg-background/30 p-6 md:p-8">
-            <button
-              type="button"
-              onClick={() => setSelectedImage(activeClarivoImage)}
-              className="group relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--border)] bg-muted/30 text-left"
-            >
-              <Image
-                src={activeClarivoImage.src}
-                alt={activeClarivoImage.alt}
-                fill
-                className="object-cover hover:scale-[1.01] transition-transform"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <ClickToExpandHint />
-            </button>
-
-            <div className="mt-4 grid grid-cols-3 sm:grid-cols-6 gap-3">
-              {clarivoImages.map((img) => (
-                <button
-                  type="button"
-                  key={img.src}
-                  onClick={() => setActiveClarivoImage(img)}
-                  className={`relative aspect-[3/4] rounded-xl overflow-hidden border bg-muted/30 hover:opacity-90 transition-opacity ${
-                    activeClarivoImage.src === img.src ? 'border-secondary' : 'border-[var(--border)]'
-                  }`}
-                  title="Open image"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 25vw, 10vw"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article className="mt-8 rounded-2xl border border-[var(--border)] bg-muted/25 overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-2">
-          <div className="p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/projects/noyer-overwatch/00-logo.png"
-                alt="Noyer Overwatch logo"
-                width={64}
-                height={64}
-                className="h-11 w-11 rounded-2xl border border-[var(--border)] bg-primary/10 object-contain p-1.5 invert brightness-200"
-              />
-              <div>
-                <h3 className="text-xl font-semibold text-secondary">Noyer Overwatch</h3>
-                <p className="text-sm text-white/60">
-                  Internship project for <span className="text-white/70">noyer.dk</span> • Sales alert dashboard
-                </p>
-              </div>
-            </div>
-
-            <p className="mt-5 text-sm text-white/85 leading-relaxed">
-              Noyer Overwatch is an automated “sales alert robot” built during my internship at noyer.dk. It monitors
-              open sales across Shopify and e-conomic, checks how long each sale has been waiting based on per-item
-              thresholds, and sends email alerts when something needs attention.
-            </p>
-
-            <div className="mt-5 grid gap-3">
-              <div className="rounded-xl border border-[var(--border)] bg-primary/10 p-4">
-                <p className="text-sm font-semibold text-secondary">How it was built</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  Built as a Node.js service with an Express dashboard. A scheduled poll cycle fetches open orders from
-                  Shopify and documents from e-conomic, normalizes them into a shared “sale” model, and runs a rule
-                  engine to decide when to alert. Alerts are sent via SMTP email (Nodemailer), with a dry-run mode for
-                  safe testing.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Product thinking & UX approach</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The dashboard is designed for operational clarity: a simple “are we OK?” status header, a sales table
-                  sorted by urgency, and quick management of tracked items (SKU / product number) with human-friendly
-                  units (days / weeks / months). Everything is optimized for fast daily checks.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Architecture & implementation</p>
-                <p className="mt-2 text-sm text-white/75 leading-relaxed">
-                  The system is split into adapters (Shopify + e-conomic), a rule engine that applies “lowest threshold
-                  wins” across matched line items, and pluggable storage (Firestore when available, otherwise JSON
-                  files). The dashboard exposes authenticated endpoints for status, sales, tracked items, and an archive
-                  flow that supports restoring an order with a future alert date.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--border)] bg-muted/30 p-4">
-                <p className="text-sm font-semibold text-secondary">Highlights</p>
-                <ul className="mt-2 text-sm text-white/75 leading-relaxed list-disc pl-5 space-y-1">
-                  <li>Monitors both Shopify orders and e-conomic documents with one unified model</li>
-                  <li>Per-item thresholds with unit conversion (days / weeks / months)</li>
-                  <li>Manual “Poll Now” trigger + progress reporting during long Shopify scans</li>
-                  <li>Alert archive + restore workflow (set a new alert date)</li>
-                  <li>Demo mode and dry-run mode for safer development</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t md:border-t-0 md:border-l border-[var(--border)] bg-background/30 p-6 md:p-8">
-            <button
-              type="button"
-              onClick={() => setSelectedImage(activeNoyerOverwatchImage)}
-              className="group relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--border)] bg-muted/30 text-left"
-            >
-              <Image
-                src={activeNoyerOverwatchImage.src}
-                alt={activeNoyerOverwatchImage.alt}
-                fill
-                className="object-cover hover:scale-[1.01] transition-transform"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <ClickToExpandHint />
-            </button>
-
-            <div className="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-3">
-              {noyerOverwatchImages.map((img) => (
-                <button
-                  type="button"
-                  key={img.src}
-                  onClick={() => setActiveNoyerOverwatchImage(img)}
-                  className={`relative aspect-[3/4] rounded-xl overflow-hidden border bg-muted/30 hover:opacity-90 transition-opacity ${
-                    activeNoyerOverwatchImage.src === img.src ? 'border-secondary' : 'border-[var(--border)]'
-                  }`}
-                  title="Open image"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 20vw, 10vw"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {selectedImage ? (
+      {selected ? (
         <div
-          className="fixed inset-0 z-[60] bg-black/80 p-4 md:p-8 flex items-center justify-center"
+          className="fixed inset-0 z-[60] bg-black/50 p-4 md:p-8 flex items-center justify-center"
           role="dialog"
           aria-modal="true"
           aria-label="Project image viewer"
           onMouseDown={(e) => {
-            if (e.target === e.currentTarget) setSelectedImage(null);
+            if (e.target === e.currentTarget) setSelected(null);
           }}
         >
-          <div className="relative w-full max-w-4xl rounded-2xl overflow-hidden border border-[var(--border)] bg-background">
+          {(() => {
+            const project = projects.find((p) => p.key === selected.projectKey);
+            if (!project) return null;
+            const active =
+              project.images.find((img) => img.src === selected.imageSrc) || project.images[0]!;
+            const activeIdx = project.images.findIndex((img) => img.src === active.src);
+            const prev = project.images[(activeIdx - 1 + project.images.length) % project.images.length]!;
+            const next = project.images[(activeIdx + 1) % project.images.length]!;
+
+            return (
+              <div className="paper-card relative w-full max-w-6xl rounded-3xl overflow-hidden bg-[var(--background)]">
             <button
               type="button"
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-3 right-3 z-10 rounded-xl bg-black/40 border border-[var(--border)] px-3 py-1.5 text-sm text-white/90 hover:bg-black/60"
+              onClick={() => setSelected(null)}
+              className="paper-button absolute top-3 right-3 z-10 rounded-2xl px-3 py-1.5 text-sm text-[var(--foreground)]"
             >
               Close
             </button>
-            <div className="relative w-full h-[78vh]">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                fill
-                className="object-contain bg-black/30"
-                sizes="100vw"
-                priority
-              />
-            </div>
-          </div>
+
+                <div className="grid md:grid-cols-[1fr_360px]">
+                  <div className="relative h-[64vh] md:h-[78vh] bg-[var(--background)]">
+                    <Image
+                      src={active.src}
+                      alt={active.alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 70vw"
+                      priority
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setSelected({ projectKey: project.key, imageSrc: prev.src })}
+                      className="paper-button absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
+                      aria-label="Previous image"
+                      title="Previous (←)"
+                    >
+                      ←
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelected({ projectKey: project.key, imageSrc: next.src })}
+                      className="paper-button absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
+                      aria-label="Next image"
+                      title="Next (→)"
+                    >
+                      →
+                    </button>
+
+                    <div className="absolute bottom-3 left-3 rounded-2xl border-2 border-[var(--border)] bg-[var(--muted)] px-3 py-1.5 text-xs text-[var(--text-muted)]">
+                      {activeIdx + 1} / {project.images.length}
+                    </div>
+                  </div>
+
+                  <aside className="border-t-2 md:border-t-0 md:border-l-2 border-[var(--border)] bg-[var(--muted)] p-5 md:p-6 overflow-auto max-h-[52vh] md:max-h-[78vh]">
+                    <h3 className="text-lg font-semibold text-[var(--foreground)]">{project.title}</h3>
+                    <p className="mt-1 text-sm text-[var(--text-subtle)]">{project.subtitle}</p>
+                    <p className="mt-3 text-sm text-[var(--text-muted)] leading-relaxed">{project.summary}</p>
+
+                    <div className="mt-4 grid gap-3">
+                      <div className="paper-card-2 rounded-3xl p-4">
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Problem</p>
+                        <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.sections.problem}</p>
+                      </div>
+                      <div className="paper-card-2 rounded-3xl p-4">
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Role</p>
+                        <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.sections.role}</p>
+                      </div>
+                      <div className="paper-card-2 rounded-3xl p-4">
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Tools</p>
+                        <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.tools.join(' · ')}</p>
+                      </div>
+                      <div className="paper-card-2 rounded-3xl p-4">
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Outcome / learning</p>
+                        <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.sections.outcome}</p>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 text-xs text-[var(--text-subtle)]">
+                      Tip: use <span className="text-[var(--foreground)]">←</span> and <span className="text-[var(--foreground)]">→</span> to navigate.
+                    </p>
+
+                    <div className="mt-4 grid grid-cols-5 gap-2">
+                      {project.images.map((img) => (
+                        <button
+                          key={img.src}
+                          type="button"
+                          onClick={() => setSelected({ projectKey: project.key, imageSrc: img.src })}
+                          className={`relative aspect-[3/4] overflow-hidden rounded-2xl border-2 bg-[var(--background)] ${
+                            img.src === active.src ? 'border-[var(--foreground)]' : 'border-[var(--border)]'
+                          }`}
+                          title="Open image"
+                        >
+                          <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="12vw" />
+                        </button>
+                      ))}
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       ) : null}
     </section>
