@@ -49,7 +49,7 @@ export function Hero({ content }: { content?: HeroContent }) {
           </p>
 
           <h1
-            className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.03] tracking-tight text-[var(--foreground)]"
+            className="mt-5 text-3xl sm:text-4xl md:text-6xl font-semibold leading-[1.06] sm:leading-[1.05] tracking-tight text-[var(--foreground)]"
             style={{ fontFamily: 'var(--font-display), serif' }}
           >
             {c.headline}
@@ -62,13 +62,13 @@ export function Hero({ content }: { content?: HeroContent }) {
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <a
               href={c.ctaPrimary?.href || defaultHero.ctaPrimary.href}
-              className="paper-button inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-transform"
+              className="paper-button inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3.5 text-sm font-semibold text-white transition-transform"
             >
               {c.ctaPrimary?.label || defaultHero.ctaPrimary.label}
             </a>
             <a
               href={c.ctaSecondary?.href || defaultHero.ctaSecondary.href}
-              className="paper-button inline-flex items-center justify-center rounded-2xl bg-secondary/20 px-5 py-3 text-sm font-semibold text-[var(--foreground)] transition-transform"
+              className="paper-button inline-flex items-center justify-center rounded-2xl bg-secondary/20 px-5 py-3.5 text-sm font-semibold text-[var(--foreground)] transition-transform"
             >
               {c.ctaSecondary?.label || defaultHero.ctaSecondary.label}
             </a>

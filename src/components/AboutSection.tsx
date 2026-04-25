@@ -37,7 +37,7 @@ export function AboutSection({ id, content }: AboutSectionProps) {
 
       <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto items-stretch">
         {/* Row 1 left: The UX me (2 cols) */}
-        <article className="paper-card scrap-card md:col-span-2 rounded-3xl p-6 md:p-7 flex flex-col min-h-[320px]">
+        <article className="paper-card scrap-card md:col-span-2 rounded-3xl p-6 md:p-7 flex flex-col min-h-[260px] md:min-h-[320px]">
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4 flex-shrink-0">
             <svg className="w-5 h-5 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -62,7 +62,7 @@ export function AboutSection({ id, content }: AboutSectionProps) {
         </article>
 
         {/* Row 1 right: Business me (1 col) */}
-        <article className="paper-card scrap-card scrap-tilt-right rounded-3xl p-6 md:p-7 flex flex-col min-h-[320px]">
+        <article className="paper-card scrap-card scrap-tilt-right rounded-3xl p-6 md:p-7 flex flex-col min-h-[260px] md:min-h-[320px]">
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4 flex-shrink-0">
             <svg className="w-5 h-5 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2h-2m-4-1V9a2 2 0 012-2h2a2 2 0 012 2v1m-6 10a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -85,7 +85,7 @@ export function AboutSection({ id, content }: AboutSectionProps) {
         </article>
 
         {/* Row 2 left: Programs I work with (2 cols) */}
-        <article className="paper-card scrap-card md:col-span-2 rounded-3xl p-6 md:p-7 flex flex-col min-h-[320px]">
+        <article className="paper-card scrap-card md:col-span-2 rounded-3xl p-6 md:p-7 flex flex-col min-h-[260px] md:min-h-[320px]">
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4 flex-shrink-0">
             <svg className="w-5 h-5 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -102,7 +102,7 @@ export function AboutSection({ id, content }: AboutSectionProps) {
         </article>
 
         {/* Row 2 right: The Private me (1 col) */}
-        <article className="paper-card scrap-card scrap-tilt-right rounded-3xl p-6 md:p-7 flex flex-col min-h-[320px]">
+        <article className="paper-card scrap-card scrap-tilt-right rounded-3xl p-6 md:p-7 flex flex-col min-h-[260px] md:min-h-[320px]">
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4 flex-shrink-0">
             <svg className="w-5 h-5 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

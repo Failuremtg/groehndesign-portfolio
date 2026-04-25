@@ -12,6 +12,7 @@ export function HeaderNav() {
   const navItemBase =
     "paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] inline-flex items-center justify-center rounded-2xl px-3 py-2 md:px-4 md:py-2.5 text-sm md:text-base font-semibold text-[var(--foreground)] whitespace-nowrap transition-transform";
   const navItemActive = "bg-[var(--muted-2)]";
+  const brand = "Alexander";
 
   const t = {
     home: "Forside",
@@ -73,13 +74,20 @@ export function HeaderNav() {
           </button>
         </div>
 
-        <div className="md:hidden w-full flex items-center justify-end gap-2">
+        <div className="md:hidden w-full flex items-center justify-between gap-2">
+          <a
+            href={hrefHome}
+            className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-semibold text-[var(--foreground)] whitespace-nowrap"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {brand}
+          </a>
           <button
             type="button"
             onClick={() => setMobileMenuOpen((v) => !v)}
             className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] inline-flex items-center justify-center rounded-2xl p-2.5 text-[var(--foreground)] transition-transform"
             aria-expanded={mobileMenuOpen}
-            aria-label="Toggle menu"
+            aria-label="Åbn menu"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
               {mobileMenuOpen ? (
@@ -143,7 +151,7 @@ export function HeaderNav() {
                 onClick={() => setContactOpen(false)}
                 className="paper-button px-3 py-2 rounded-2xl text-[var(--foreground)]"
               >
-                Close
+                Luk
               </button>
             </div>
 

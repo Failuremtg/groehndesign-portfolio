@@ -395,7 +395,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
             const next = project.images[(activeIdx + 1) % project.images.length]!;
 
             return (
-              <div className="paper-card relative w-full max-w-6xl rounded-3xl overflow-hidden bg-[var(--background)]">
+              <div className="paper-card relative w-full max-w-6xl rounded-3xl bg-[var(--background)] max-h-[92vh] overflow-auto md:overflow-hidden">
             <button
               type="button"
               onClick={() => setSelected(null)}
@@ -405,7 +405,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
             </button>
 
                 <div className="grid md:grid-cols-[1fr_360px]">
-                  <div className="relative h-[64vh] md:h-[78vh] bg-[var(--background)]">
+                  <div className="relative h-[46vh] sm:h-[56vh] md:h-[78vh] bg-[var(--background)]">
                     <Image
                       src={active.src}
                       alt={active.alt}
@@ -439,7 +439,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                     </div>
                   </div>
 
-                  <aside className="border-t-2 md:border-t-0 md:border-l-2 border-[var(--border)] bg-[var(--muted)] p-5 md:p-6 overflow-auto max-h-[52vh] md:max-h-[78vh]">
+                  <aside className="border-t-2 md:border-t-0 md:border-l-2 border-[var(--border)] bg-[var(--muted)] p-5 md:p-6 overflow-visible md:overflow-auto md:max-h-[78vh]">
                     <h3 className="text-lg font-semibold text-[var(--foreground)]">{project.title}</h3>
                     <p className="mt-1 text-sm text-[var(--text-subtle)]">{project.subtitle}</p>
                     <p className="mt-3 text-sm text-[var(--text-muted)] leading-relaxed">{project.summary}</p>
@@ -463,7 +463,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                       </div>
                     </div>
 
-                    <p className="mt-4 text-xs text-[var(--text-subtle)]">
+                    <p className="mt-4 text-xs text-[var(--text-subtle)] hidden md:block">
                       Tip: Brug <span className="text-[var(--foreground)]">←</span> og <span className="text-[var(--foreground)]">→</span> for at navigere.
                     </p>
 
