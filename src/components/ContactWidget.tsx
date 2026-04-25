@@ -13,9 +13,9 @@ export type ContactWidgetContent = {
 const defaultContent: Required<ContactWidgetContent> = {
   email: 'alexanderbghenriksen@gmail.com',
   linkedin: 'https://www.linkedin.com/in/alexander-henriksen-298699383/',
-  widgetTitle: 'Contact me',
-  widgetSubtitle: "Got an idea or a project? Let's talk.",
-  widgetButtonLabel: "Let's connect",
+  widgetTitle: 'Kontakt mig',
+  widgetSubtitle: 'Har du en idé eller et projekt? Lad os tage en snak.',
+  widgetButtonLabel: 'Kontakt',
 };
 
 export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
@@ -53,7 +53,7 @@ export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
         >
           <div className="flex items-center gap-2">
             <span className="text-sm text-[var(--foreground)] bg-[var(--muted)] border-2 border-[var(--border)] rounded-full px-4 py-1.5 shadow-sm">
-              Click me
+              Klik her
             </span>
             <svg
               width="46"
@@ -97,7 +97,7 @@ export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
               type="button"
               onClick={() => setOpen(false)}
               className="paper-button rounded-2xl px-3 py-2 text-[var(--foreground)]"
-              aria-label="Close contact popup"
+              aria-label="Luk kontakt"
             >
               ✕
             </button>
@@ -136,13 +136,13 @@ export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
               </span>
               <span className="min-w-0">
                 <span className="block font-semibold">LinkedIn</span>
-                <span className="block text-[var(--text-muted)] truncate text-sm">Open profile</span>
+                <span className="block text-[var(--text-muted)] truncate text-sm">Åbn profil</span>
               </span>
               <span className="ml-auto text-[var(--text-faint)] text-sm">→</span>
             </a>
 
             <p className="text-xs text-[var(--text-faint)] pt-1">
-              Tip: press <span className="text-[var(--text-muted)]">Esc</span> to close.
+              Tip: Tryk <span className="text-[var(--text-muted)]">Esc</span> for at lukke.
             </p>
           </div>
         </div>
@@ -153,7 +153,7 @@ export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="paper-button mt-4 ml-auto inline-flex items-center gap-3 rounded-full px-5 py-4 text-base text-[var(--foreground)] transition-all hover:-translate-y-0.5"
-        aria-label={open ? 'Close contact popup' : 'Open contact popup'}
+        aria-label={open ? 'Luk kontakt' : 'Åbn kontakt'}
       >
         <span className="relative w-11 h-11 rounded-full bg-[var(--background)] border-2 border-[var(--border)] flex items-center justify-center shadow-sm">
           <svg className="w-5 h-5 text-[var(--foreground)] relative" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>

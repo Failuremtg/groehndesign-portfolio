@@ -5,9 +5,9 @@ interface ContactSectionProps {
 export function ContactSection({ id }: ContactSectionProps) {
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
-      <h2 className="text-2xl font-bold md:text-3xl text-[var(--foreground)]">Let’s work together</h2>
+      <h2 className="text-2xl font-bold md:text-3xl text-[var(--foreground)]">Lad os arbejde sammen</h2>
       <p className="mt-2 text-[var(--text-muted)]">
-        Open to internships, junior UX roles, freelance projects, and collaboration.
+        Åben for praktik, junior UX‑roller, freelanceprojekter og samarbejde.
       </p>
       <ul className="mt-6 flex flex-wrap gap-4">
         <li>

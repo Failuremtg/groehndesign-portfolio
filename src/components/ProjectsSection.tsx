@@ -29,7 +29,7 @@ function ClickToExpandHint({ className }: { className?: string }) {
             strokeLinecap="round"
           />
         </svg>
-        <span>Click to view</span>
+        <span>Klik for at se</span>
       </div>
     </div>
   );
@@ -330,12 +330,12 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
           className="text-2xl font-bold md:text-3xl text-[var(--foreground)]"
           style={{ fontFamily: 'var(--font-display), serif' }}
         >
-          {sectionHeadline || 'Projects'}
+          {sectionHeadline || 'Projekter'}
         </h2>
         <p className="mt-2 text-[var(--text-muted)] leading-relaxed max-w-3xl">
           {sectionIntro || (
             <>
-              A quick visual preview first. Click any project to view a larger gallery.
+              Først en hurtig visuel preview. Klik på et projekt for at åbne et større galleri.
             </>
           )}
         </p>
@@ -380,7 +380,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
           className="fixed inset-0 z-[60] bg-black/50 p-4 md:p-8 flex items-center justify-center"
           role="dialog"
           aria-modal="true"
-          aria-label="Project image viewer"
+          aria-label="Projektgalleri"
           onMouseDown={(e) => {
             if (e.target === e.currentTarget) setSelected(null);
           }}
@@ -401,7 +401,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
               onClick={() => setSelected(null)}
               className="paper-button absolute top-3 right-3 z-10 rounded-2xl px-3 py-1.5 text-sm text-[var(--foreground)]"
             >
-              Close
+              Luk
             </button>
 
                 <div className="grid md:grid-cols-[1fr_360px]">
@@ -419,8 +419,8 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                       type="button"
                       onClick={() => setSelected({ projectKey: project.key, imageSrc: prev.src })}
                       className="paper-button absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
-                      aria-label="Previous image"
-                      title="Previous (←)"
+                      aria-label="Forrige billede"
+                      title="Forrige (←)"
                     >
                       ←
                     </button>
@@ -428,8 +428,8 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                       type="button"
                       onClick={() => setSelected({ projectKey: project.key, imageSrc: next.src })}
                       className="paper-button absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
-                      aria-label="Next image"
-                      title="Next (→)"
+                      aria-label="Næste billede"
+                      title="Næste (→)"
                     >
                       →
                     </button>
@@ -450,21 +450,21 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                         <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.sections.problem}</p>
                       </div>
                       <div className="paper-card-2 rounded-3xl p-4">
-                        <p className="text-sm font-semibold text-[var(--foreground)]">Role</p>
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Rolle</p>
                         <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.sections.role}</p>
                       </div>
                       <div className="paper-card-2 rounded-3xl p-4">
-                        <p className="text-sm font-semibold text-[var(--foreground)]">Tools</p>
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Værktøjer</p>
                         <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.tools.join(' · ')}</p>
                       </div>
                       <div className="paper-card-2 rounded-3xl p-4">
-                        <p className="text-sm font-semibold text-[var(--foreground)]">Outcome / learning</p>
+                        <p className="text-sm font-semibold text-[var(--foreground)]">Resultat / læring</p>
                         <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{project.sections.outcome}</p>
                       </div>
                     </div>
 
                     <p className="mt-4 text-xs text-[var(--text-subtle)]">
-                      Tip: use <span className="text-[var(--foreground)]">←</span> and <span className="text-[var(--foreground)]">→</span> to navigate.
+                      Tip: Brug <span className="text-[var(--foreground)]">←</span> og <span className="text-[var(--foreground)]">→</span> for at navigere.
                     </p>
 
                     <div className="mt-4 grid grid-cols-5 gap-2">
@@ -476,7 +476,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                           className={`relative aspect-[3/4] overflow-hidden rounded-2xl border-2 bg-[var(--background)] ${
                             img.src === active.src ? 'border-[var(--foreground)]' : 'border-[var(--border)]'
                           }`}
-                          title="Open image"
+                          title="Åbn billede"
                         >
                           <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="12vw" />
                         </button>

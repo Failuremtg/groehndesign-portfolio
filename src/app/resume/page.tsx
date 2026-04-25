@@ -11,7 +11,7 @@ export default function ResumePage() {
                 <div className="min-w-[220px]">
                   <h2 className="text-2xl md:text-3xl font-bold text-secondary">Alexander B. Henriksen</h2>
                   <p className="mt-2 text-sm text-[var(--text-subtle)]">
-                    Multimedia designer student • UX design • Vite coding • Event cordinator • Educator
+                    Multimediedesignerstuderende • UX design • Vite udvikling • Eventkoordinator • Underviser
                   </p>
                   <div className="mt-4">
                     <ProgramLogos />
@@ -22,65 +22,65 @@ export default function ResumePage() {
           </section>
 
           <section className="mt-8 paper-card rounded-3xl p-6 md:p-7">
-            <h3 className="text-lg font-semibold text-secondary">Skills</h3>
+            <h3 className="text-lg font-semibold text-secondary">Kompetencer</h3>
             <ul className="mt-5 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-2">
-              <li>UX design, user research, and user journey mapping</li>
-              <li>Prototyping, ideation, and translating insights into design solutions</li>
-              <li>AI-assisted product development (e.g. Cursor, Claude) for prototyping and build</li>
-              <li>Professional communication, interviews, and cross-team collaboration</li>
-              <li>Event coordination, teaching, and retail / customer-facing roles</li>
+              <li>UX design, brugerresearch og user journey mapping</li>
+              <li>Prototyping, idéudvikling og omsætning af indsigter til designløsninger</li>
+              <li>AI‑assisteret produktudvikling (fx Cursor, Claude) til prototyper og build</li>
+              <li>Professionel kommunikation, interviews og samarbejde på tværs af teams</li>
+              <li>Eventkoordinering, undervisning og detail / kundevendte roller</li>
             </ul>
           </section>
 
           <section className="mt-8 paper-card rounded-3xl p-6 md:p-7">
-            <h3 className="text-lg font-semibold text-secondary">Work experience</h3>
+            <h3 className="text-lg font-semibold text-secondary">Erhvervserfaring</h3>
             <div className="mt-5 space-y-6">
               <article>
                 <p className="font-medium text-secondary/90">Nærumgaard - Caretaker</p>
                 <p className="text-sm text-[var(--text-subtle)]">2011–2014</p>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">Take care of children and youngsters with autism and other mental disabilities.</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Omsorg for børn og unge med autisme og andre psykiske funktionsnedsættelser.</p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Nightguard</li>
-                  <li>Activity planner</li>
+                  <li>Nattevagt</li>
+                  <li>Aktivitetsplanlægning</li>
                 </ul>
               </article>
 
               <article>
                 <p className="font-medium text-secondary/90">Eventyrridderne - &quot;Børnetæmmer&quot; Event worker</p>
                 <p className="text-sm text-[var(--text-subtle)]">2015–2016</p>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">Create and execute events for children ages 9–15.</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Planlægning og afvikling af events for børn i alderen 9–15.</p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Planning events</li>
-                  <li>Play roles/characters in events</li>
+                  <li>Planlægning af events</li>
+                  <li>Rolle-/karakterspil i events</li>
                 </ul>
               </article>
 
               <article>
                 <p className="font-medium text-secondary/90">Faraos Cigarer As - Part Time</p>
                 <p className="text-sm text-[var(--text-subtle)]">2017–2020</p>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">Stocking shelves, customer relations, and cashier work.</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Vareopfyldning, kundekontakt og kassearbejde.</p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Working at the counter</li>
-                  <li>Taking care of customers coming in the shop</li>
+                  <li>Betjening i kasse</li>
+                  <li>Kundeservice i butik</li>
                 </ul>
               </article>
 
               <article>
                 <p className="font-medium text-secondary/90">Utterslev skole - Substitute Teacher</p>
                 <p className="text-sm text-[var(--text-subtle)]">2018–2019</p>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">Teacher for all grades in primary English and social studies.</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Vikarunderviser i engelsk og samfundsfag på tværs af klassetrin.</p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Teaching and social training</li>
+                  <li>Undervisning og social træning</li>
                 </ul>
               </article>
 
               <article>
                 <p className="font-medium text-secondary/90">Faraos Cigarer As - Full time Department responsible</p>
                 <p className="text-sm text-[var(--text-subtle)]">2020–2023</p>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">Ordering stock, B2B relations, keeping track of stock, cashier and customer relations.</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Varebestilling, B2B‑relationer, lagerstyring, kasse og kundekontakt.</p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Creating growth in the department</li>
-                  <li>Daily retail tasks</li>
+                  <li>Skabe vækst i afdelingen</li>
+                  <li>Daglige butiksopgaver</li>
                 </ul>
               </article>
 
@@ -88,28 +88,28 @@ export default function ResumePage() {
                 <p className="font-medium text-secondary/90">Sputnik skolerne - Teacher</p>
                 <p className="text-sm text-[var(--text-subtle)]">2023–2024</p>
                 <p className="mt-2 text-sm text-[var(--text-muted)]">
-                  Special education teacher with expertise in nerdy culture and social training.
+                  Specialunderviser med fokus på nerd-kultur og social træning.
                 </p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Teaching ages 11–18</li>
-                  <li>Directing social events and classes</li>
+                  <li>Undervisning (11–18 år)</li>
+                  <li>Facilitering af sociale events og forløb</li>
                 </ul>
               </article>
 
               <article>
                 <p className="font-medium text-secondary/90">Luftens Helte Band - Merchandise seller (volunteer work)</p>
                 <p className="text-sm text-[var(--text-subtle)]">2023–now</p>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">Merchandise coordinator and sales person.</p>
+                <p className="mt-2 text-sm text-[var(--text-muted)]">Merchandise‑koordinator og sælger.</p>
                 <ul className="mt-2 text-sm text-[var(--text-muted)] list-disc pl-5 space-y-1">
-                  <li>Setting up merchandise for concerts</li>
-                  <li>Manning the stand during concerts</li>
+                  <li>Opsætning af merchandise til koncerter</li>
+                  <li>Betjening af bod under koncerter</li>
                 </ul>
               </article>
             </div>
           </section>
 
           <section className="mt-8 paper-card rounded-3xl p-6 md:p-7">
-            <h3 className="text-lg font-semibold text-secondary">Education</h3>
+            <h3 className="text-lg font-semibold text-secondary">Uddannelse</h3>
             <div className="mt-5 space-y-5">
               <div>
                 <p className="font-medium text-secondary/90">VUC HILLERØD (HF)</p>
@@ -127,7 +127,7 @@ export default function ResumePage() {
           </section>
 
           <section className="mt-6 paper-card rounded-3xl p-6 md:p-8">
-            <h3 className="text-lg font-semibold text-secondary">Contact</h3>
+            <h3 className="text-lg font-semibold text-secondary">Kontakt</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <a
                 href="mailto:alexanderbghenriksen@gmail.com"

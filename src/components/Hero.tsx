@@ -15,19 +15,19 @@ const defaultHero: Required<Pick<
   HeroContent,
   'badge' | 'headline' | 'subheadline' | 'ctaPrimary' | 'ctaSecondary' | 'bullets' | 'portraitCaptionTitle' | 'portraitCaptionBody'
 >> = {
-  badge: 'The Practical AI‑Augmented UX Designer',
-  headline: 'UX Designer building practical, user‑focused digital solutions',
+  badge: 'Den praktiske AI‑forstærkede UX‑designer',
+  headline: 'UX‑designer der bygger praktiske, brugerfokuserede digitale løsninger',
   subheadline:
-    'I combine UX research, clear communication, and AI‑assisted development workflows to turn messy problems into usable products.',
-  ctaPrimary: { label: 'View my work', href: '#projects' },
-  ctaSecondary: { label: 'Contact me', href: '#contact' },
+    'Jeg kombinerer UX‑research, tydelig kommunikation og AI‑assisterede udviklingsworkflows for at gøre rodede problemer til brugbare produkter.',
+  ctaPrimary: { label: 'Se projekter', href: '#projects' },
+  ctaSecondary: { label: 'Kontakt mig', href: '#contact' },
   bullets: [
-    'UX thinking: research, journeys, wireframes, prototypes, and clear decisions.',
-    'AI‑assisted workflow: faster iteration from insight → prototype → build (Cursor + Claude).',
-    'Practical, real‑world communication (retail + teaching background).',
+    'UX‑tænkning: research, flows, wireframes, prototyper og klare beslutninger.',
+    'AI‑assisteret workflow: hurtigere iteration fra indsigt → prototype → build (Cursor + Claude).',
+    'Praktisk kommunikation fra den virkelige verden (detail + undervisning).',
   ],
   portraitCaptionTitle: 'Alexander B. Henriksen',
-  portraitCaptionBody: 'UX design is not about what the designer prefers, but about what the user needs.',
+  portraitCaptionBody: '“UX design er ikke hvad designeren foretrækker, men hvad brugeren har brug for.”',
 };
 
 export function Hero({ content }: { content?: HeroContent }) {

@@ -25,8 +25,8 @@ const pixelFont = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Multimedia Designer',
-  description: 'Multimedia designer portfolio — work, about, contact.',
+  title: 'Portfolio | Multimediedesigner',
+  description: 'Multimediedesigner portfolio — projekter, om mig, kontakt.',
 };
 
 export const viewport: Viewport = {
