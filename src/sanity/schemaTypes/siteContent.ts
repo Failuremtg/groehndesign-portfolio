@@ -10,7 +10,7 @@ export const siteContent = defineType({
     hero: defaultSiteContent.hero,
     strengths: defaultSiteContent.strengths,
     aiWorkflow: defaultSiteContent.aiWorkflow,
-    capabilities: defaultSiteContent.capabilities,
+    process: defaultSiteContent.process,
     projects: defaultSiteContent.projects,
     about: defaultSiteContent.about,
     contact: defaultSiteContent.contact,
@@ -116,36 +116,25 @@ export const siteContent = defineType({
       ],
     }),
     defineField({
-      name: 'capabilities',
-      title: 'Capabilities',
+      name: 'process',
+      title: 'Process',
       type: 'object',
       fields: [
         { name: 'headline', title: 'Headline', type: 'string' },
         { name: 'intro', title: 'Intro', type: 'text', rows: 2 },
         {
-          name: 'groups',
-          title: 'Groups',
+          name: 'steps',
+          title: 'Steps',
           type: 'array',
           of: [
             {
               type: 'object',
               fields: [
                 { name: 'title', title: 'Title', type: 'string' },
-                {
-                  name: 'items',
-                  title: 'Items',
-                  type: 'array',
-                  of: [{ type: 'string' }],
-                },
+                { name: 'body', title: 'Body', type: 'text', rows: 2 },
               ],
             },
           ],
-        },
-        {
-          name: 'tags',
-          title: 'Tags',
-          type: 'array',
-          of: [{ type: 'string' }],
         },
       ],
     }),

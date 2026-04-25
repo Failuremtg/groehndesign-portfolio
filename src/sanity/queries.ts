@@ -25,11 +25,10 @@ export type SiteContent = {
     steps?: { title?: string; body?: string }[];
     outro?: string;
   };
-  capabilities?: {
+  process?: {
     headline?: string;
     intro?: string;
-    groups?: { title?: string; items?: string[] }[];
-    tags?: string[];
+    steps?: { title?: string; body?: string }[];
   };
   projects?: {
     headline?: string;
@@ -71,7 +70,7 @@ function siteContentQueryForId(id: string) {
     strengths,
     about,
     aiWorkflow,
-    capabilities,
+    process,
     contact
   }`;
 }
@@ -87,7 +86,7 @@ export async function getSiteContent(): Promise<SiteContent | null> {
 
     // Backward-compatible fallback if a non-singleton doc already exists
     return await sanityClient.fetch(
-      groq`*[_type == "siteContent"][0]{hero,projects,strengths,about,aiWorkflow,capabilities,contact}`,
+      groq`*[_type == "siteContent"][0]{hero,projects,strengths,about,aiWorkflow,process,contact}`,
     );
   } catch {
     return null;

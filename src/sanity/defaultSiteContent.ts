@@ -63,29 +63,18 @@ export const defaultSiteContent = {
     ],
     outro: 'faster prototyping, clearer UX writing, better edge-case coverage, and a tighter design→build handoff.',
   },
-  capabilities: {
-    headline: 'Capabilities',
+  process: {
+    headline: 'Proces',
     intro:
-      'The work I can support end-to-end—especially when you need both strong UX and a fast path to a working prototype.',
-    groups: [
-      {
-        title: 'UX research',
-        items: ['Interview planning + synthesis', 'Behavior + needs mapping', 'Insights → design principles'],
-      },
-      {
-        title: 'UX design',
-        items: ['User journeys, flows, and states', 'Wireframes → prototypes', 'Information hierarchy + clarity'],
-      },
-      {
-        title: 'Product & delivery',
-        items: ['Scope and trade-offs', 'Prototype-to-build collaboration', 'Design systems mindset'],
-      },
-      {
-        title: 'Frontend & AI-assisted build',
-        items: ['React / Next.js / Tailwind', 'Rapid prototyping with Cursor + Claude', 'Component thinking and UI states'],
-      },
+      'Discover → Define → Design → Prototype → Test → Improve. AI‑værktøjer kan gøre ideation, kodning og iteration hurtigere — men beslutninger skal stadig være forankret i brugerbehov.',
+    steps: [
+      { title: 'Discover', body: 'Forstå brugerne, konteksten og de reelle constraints.' },
+      { title: 'Define', body: 'Afklar problemet, succeskriterierne og hvad vi tester.' },
+      { title: 'Design', body: 'Design flows, states og hierarki, der reducerer friktion og forvirring.' },
+      { title: 'Prototype', body: 'Byg en testbar prototype (Figma eller frontend) og valider det vigtigste.' },
+      { title: 'Test', body: 'Tjek forståelse, edge cases og usability — og iterér hurtigt.' },
+      { title: 'Improve', body: 'Forfin med feedback. AI kan øge tempoet, men erstatter ikke UX‑dømmekraft.' },
     ],
-    tags: ['Figma', 'React', 'Next.js', 'Tailwind', 'Expo', 'Cursor', 'Claude', 'User journeys', 'Prototyping'],
   },
   projects: {
     headline: 'Projects',

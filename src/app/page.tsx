@@ -17,7 +17,7 @@ export default async function Home() {
       </HeroScrollFade>
       <div className="relative z-10 bg-background">
         <ProjectsSection id="projects" content={site?.projects} />
-        <ProcessSection id="process" />
+        <ProcessSection id="process" content={site?.process} />
         <AboutSection id="about" content={site?.about} />
         <SkillsSection id="skills" />
         <ContactSection id="contact" />

@@ -52,7 +52,7 @@ export const FillDefaultsAction: DocumentActionComponent = (props: DocumentActio
         strengths: defaultSiteContent.strengths,
         about: defaultSiteContent.about,
         aiWorkflow: defaultSiteContent.aiWorkflow,
-        capabilities: defaultSiteContent.capabilities,
+        process: defaultSiteContent.process,
         contact: defaultSiteContent.contact,
       };
 

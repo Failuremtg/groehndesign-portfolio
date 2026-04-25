@@ -1,17 +1,23 @@
 interface ProcessSectionProps {
   id: string;
+  content?: {
+    headline?: string;
+    intro?: string;
+    steps?: { title?: string; body?: string }[];
+  };
 }
 
-const steps = [
-  { title: 'Discover', body: 'Understand the users, the context, and the real constraints.' },
-  { title: 'Define', body: 'Clarify the problem, success criteria, and what we’re testing.' },
-  { title: 'Design', body: 'Create flows, states, and hierarchy that reduce friction and confusion.' },
-  { title: 'Prototype', body: 'Build a testable prototype (Figma or frontend) to validate what matters.' },
-  { title: 'Test', body: 'Check comprehension, edge cases, and usability — iterate quickly.' },
-  { title: 'Improve', body: 'Refine based on feedback. AI helps speed up iteration, not replace UX judgment.' },
+const defaultSteps = [
+  { title: 'Discover', body: 'Forstå brugerne, konteksten og de reelle constraints.' },
+  { title: 'Define', body: 'Afklar problemet, succeskriterierne og hvad vi tester.' },
+  { title: 'Design', body: 'Design flows, states og hierarki, der reducerer friktion og forvirring.' },
+  { title: 'Prototype', body: 'Byg en testbar prototype (Figma eller frontend) og valider det vigtigste.' },
+  { title: 'Test', body: 'Tjek forståelse, edge cases og usability — og iterér hurtigt.' },
+  { title: 'Improve', body: 'Forfin med feedback. AI kan øge tempoet, men erstatter ikke UX‑dømmekraft.' },
 ];
 
-export function ProcessSection({ id }: ProcessSectionProps) {
+export function ProcessSection({ id, content }: ProcessSectionProps) {
+  const steps = content?.steps?.length ? content.steps : defaultSteps;
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
       <header className="max-w-3xl">
@@ -19,17 +25,17 @@ export function ProcessSection({ id }: ProcessSectionProps) {
           className="text-2xl font-bold md:text-3xl text-[var(--foreground)]"
           style={{ fontFamily: 'var(--font-display), serif' }}
         >
-          Process
+          {content?.headline || 'Proces'}
         </h2>
         <p className="mt-2 text-[var(--text-muted)] leading-relaxed">
-          Discover → Define → Design → Prototype → Test → Improve. AI tools speed up ideation, coding, and iteration —
-          but decisions stay grounded in user needs.
+          {content?.intro ||
+            'Discover → Define → Design → Prototype → Test → Improve. AI‑værktøjer kan gøre ideation, kodning og iteration hurtigere — men beslutninger skal stadig være forankret i brugerbehov.'}
         </p>
       </header>
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
-        {steps.map((s) => (
-          <article key={s.title} className="paper-card rounded-3xl p-6 md:p-7">
+        {steps.map((s, idx) => (
+          <article key={`${s.title || 'step'}-${idx}`} className="paper-card rounded-3xl p-6 md:p-7">
             <h3 className="text-base font-semibold text-[var(--foreground)]">{s.title}</h3>
             <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{s.body}</p>
           </article>
