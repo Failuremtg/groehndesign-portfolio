@@ -138,6 +138,42 @@ export const siteContent = defineType({
         },
       ],
     }),
+    // Legacy field: keep hidden to avoid "Unknown field found" warnings
+    // for existing documents that still contain `capabilities`.
+    defineField({
+      name: 'capabilities',
+      title: 'Capabilities (legacy)',
+      type: 'object',
+      readOnly: true,
+      hidden: true,
+      fields: [
+        {
+          name: 'groups',
+          title: 'Groups',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'title', title: 'Title', type: 'string' },
+                {
+                  name: 'items',
+                  title: 'Items',
+                  type: 'array',
+                  of: [{ type: 'string' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: 'tags',
+          title: 'Tags',
+          type: 'array',
+          of: [{ type: 'string' }],
+        },
+      ],
+    }),
     defineField({
       name: 'projects',
       title: 'Projects',
