@@ -138,6 +138,34 @@ export const siteContent = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'skills',
+      title: 'Skills',
+      type: 'object',
+      fields: [
+        { name: 'headline', title: 'Headline', type: 'string' },
+        { name: 'intro', title: 'Intro', type: 'text', rows: 2 },
+        {
+          name: 'groups',
+          title: 'Skill groups',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'title', title: 'Title', type: 'string' },
+                {
+                  name: 'items',
+                  title: 'Items',
+                  type: 'array',
+                  of: [{ type: 'string' }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }),
     // Legacy field: keep hidden to avoid "Unknown field found" warnings
     // for existing documents that still contain `capabilities`.
     defineField({

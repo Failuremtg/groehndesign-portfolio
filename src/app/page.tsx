@@ -21,7 +21,7 @@ export default async function Home() {
         <ProjectsSection id="projects" content={site?.projects} />
         <ProcessSection id="process" content={site?.process} />
         <AboutSection id="about" content={site?.about} />
-        <SkillsSection id="skills" />
+        <SkillsSection id="skills" content={site?.skills} />
         <ContactSection id="contact" />
       </div>
     </>

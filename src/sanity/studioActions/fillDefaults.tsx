@@ -53,6 +53,7 @@ export const FillDefaultsAction: DocumentActionComponent = (props: DocumentActio
         about: defaultSiteContent.about,
         aiWorkflow: defaultSiteContent.aiWorkflow,
         process: defaultSiteContent.process,
+        skills: defaultSiteContent.skills,
         contact: defaultSiteContent.contact,
       };
 

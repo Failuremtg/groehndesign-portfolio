@@ -1,36 +1,46 @@
 interface SkillsSectionProps {
   id: string;
+  content?: {
+    headline?: string;
+    intro?: string;
+    groups?: { title?: string; items?: string[] }[];
+  };
 }
 
-const groups = [
+const defaultGroups = [
   {
     title: 'UX & Research',
-    items: ['User interviews', 'Personas', 'User journeys', 'Usability checks', 'Insight synthesis'],
+    items: ['Brugerinterviews', 'Personas', 'User journeys', 'Usability checks', 'Syntese af indsigter'],
     accentClass: 'accent-purple',
   },
   {
     title: 'Design & Prototyping',
-    items: ['Information hierarchy', 'Wireframes', 'Prototypes (Figma)', 'Interaction states', 'UX writing'],
+    items: ['Informationshierarki', 'Wireframes', 'Prototyper (Figma)', 'Interaction states', 'UX writing'],
     accentClass: 'accent-gold',
   },
   {
     title: 'Frontend & Web',
-    items: ['React', 'Next.js', 'Tailwind', 'Expo/React Native', 'Component systems'],
+    items: ['React', 'Next.js', 'Tailwind', 'Expo/React Native', 'Komponentsystemer'],
     accentClass: 'accent-blue',
   },
   {
-    title: 'AI Tools',
-    items: ['Cursor', 'Claude', 'Prompt iteration', 'Rapid prototyping', 'Edge-case exploration'],
+    title: 'AI‑værktøjer',
+    items: ['Cursor', 'Claude', 'Prompt‑iteration', 'Hurtig prototyping', 'Edge‑case exploration'],
     accentClass: 'accent-mint',
   },
   {
     title: 'Analytics',
-    items: ['Basic event thinking', 'Qual + quant framing', 'Funnel reasoning', 'Success metrics'],
+    items: ['Grundlæggende event‑tænkning', 'Qual + quant framing', 'Funnel‑tænkning', 'Succesmål (metrics)'],
     accentClass: 'accent-purple',
   },
 ];
 
-export function SkillsSection({ id }: SkillsSectionProps) {
+export function SkillsSection({ id, content }: SkillsSectionProps) {
+  const groups = (content?.groups?.length ? content.groups : defaultGroups).map((g, idx) => ({
+    title: g.title,
+    items: g.items || [],
+    accentClass: defaultGroups[idx % defaultGroups.length]?.accentClass || 'accent-purple',
+  }));
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
       <header className="max-w-3xl">
@@ -38,10 +48,10 @@ export function SkillsSection({ id }: SkillsSectionProps) {
           className="text-2xl font-bold md:text-3xl text-[var(--foreground)]"
           style={{ fontFamily: 'var(--font-display), serif' }}
         >
-          Skills
+          {content?.headline || 'Kompetencer'}
         </h2>
         <p className="mt-2 text-[var(--text-muted)] leading-relaxed">
-          A practical toolkit for turning user needs into working, testable digital solutions.
+          {content?.intro || 'Et praktisk værktøjssæt til at gøre brugerbehov til testbare digitale løsninger.'}
         </p>
       </header>
 

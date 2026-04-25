@@ -60,13 +60,6 @@ export function StrengthsSection({ id, content }: StrengthsSectionProps) {
           </article>
         ))}
       </div>
-
-      <div className="mt-8 paper-card-2 rounded-3xl p-6 md:p-7">
-        <p className="text-sm text-black/70 leading-relaxed">
-          <span className="font-semibold text-[var(--foreground)]">Recruiter-friendly summary:</span> UX Designer + AI Product Builder with
-          {` ${content?.summary || 'strong communication skills and hands-on frontend understanding.'}`}
-        </p>
-      </div>
     </section>
   );
 }

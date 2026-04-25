@@ -76,6 +76,32 @@ export const defaultSiteContent = {
       { title: 'Improve', body: 'Forfin med feedback. AI kan øge tempoet, men erstatter ikke UX‑dømmekraft.' },
     ],
   },
+  skills: {
+    headline: 'Kompetencer',
+    intro: 'Et praktisk værktøjssæt til at gøre brugerbehov til testbare digitale løsninger.',
+    groups: [
+      {
+        title: 'UX & Research',
+        items: ['Brugerinterviews', 'Personas', 'User journeys', 'Usability checks', 'Syntese af indsigter'],
+      },
+      {
+        title: 'Design & Prototyping',
+        items: ['Informationshierarki', 'Wireframes', 'Prototyper (Figma)', 'Interaction states', 'UX writing'],
+      },
+      {
+        title: 'Frontend & Web',
+        items: ['React', 'Next.js', 'Tailwind', 'Expo/React Native', 'Komponentsystemer'],
+      },
+      {
+        title: 'AI‑værktøjer',
+        items: ['Cursor', 'Claude', 'Prompt‑iteration', 'Hurtig prototyping', 'Edge‑case exploration'],
+      },
+      {
+        title: 'Analytics',
+        items: ['Grundlæggende event‑tænkning', 'Qual + quant framing', 'Funnel‑tænkning', 'Succesmål (metrics)'],
+      },
+    ],
+  },
   projects: {
     headline: 'Projects',
     intro:
