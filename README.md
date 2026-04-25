@@ -17,6 +17,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+Deployment trigger: update
+
 ## Structure
 
 - **`src/app/`** — App Router: `layout.tsx`, `page.tsx`, `globals.css`
