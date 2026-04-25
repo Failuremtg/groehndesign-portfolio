@@ -399,7 +399,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
             <button
               type="button"
               onClick={() => setSelected(null)}
-              className="paper-button absolute top-3 right-3 z-10 rounded-2xl px-3 py-1.5 text-sm text-[var(--foreground)]"
+              className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] absolute top-3 right-3 z-10 rounded-2xl px-3 py-1.5 text-sm text-[var(--foreground)]"
             >
               Luk
             </button>
@@ -418,7 +418,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                     <button
                       type="button"
                       onClick={() => setSelected({ projectKey: project.key, imageSrc: prev.src })}
-                      className="paper-button absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
+                      className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
                       aria-label="Forrige billede"
                       title="Forrige (←)"
                     >
@@ -427,7 +427,7 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
                     <button
                       type="button"
                       onClick={() => setSelected({ projectKey: project.key, imageSrc: next.src })}
-                      className="paper-button absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
+                      className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl px-3 py-2 text-sm text-[var(--foreground)]"
                       aria-label="Næste billede"
                       title="Næste (→)"
                     >

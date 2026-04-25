@@ -10,7 +10,7 @@ export function HeaderNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItemBase =
-    "paper-button inline-flex items-center justify-center rounded-2xl px-3 py-2 md:px-4 md:py-2.5 text-sm md:text-base font-semibold text-[var(--foreground)] whitespace-nowrap transition-transform";
+    "paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] inline-flex items-center justify-center rounded-2xl px-3 py-2 md:px-4 md:py-2.5 text-sm md:text-base font-semibold text-[var(--foreground)] whitespace-nowrap transition-transform";
   const navItemActive = "bg-[var(--muted-2)]";
 
   const t = {
@@ -77,7 +77,7 @@ export function HeaderNav() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((v) => !v)}
-            className="paper-button inline-flex items-center justify-center rounded-2xl p-2.5 text-[var(--foreground)] transition-transform"
+            className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] inline-flex items-center justify-center rounded-2xl p-2.5 text-[var(--foreground)] transition-transform"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
           >

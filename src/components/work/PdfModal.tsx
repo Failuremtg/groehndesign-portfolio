@@ -60,23 +60,23 @@ export function PdfModal({
               type="button"
               onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
               disabled={pageNumber === 1}
-              className="paper-button px-3 py-1.5 rounded-xl text-[var(--foreground)] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] px-3 py-1.5 rounded-xl text-[var(--foreground)] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Prev
+              Forrige
             </button>
             <button
               type="button"
               onClick={() => setPageNumber((p) => p + 1)}
-              className="paper-button px-3 py-1.5 rounded-xl text-[var(--foreground)]"
+              className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] px-3 py-1.5 rounded-xl text-[var(--foreground)]"
             >
-              Next
+              Næste
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="paper-button px-3 py-1.5 rounded-xl text-[var(--foreground)]"
+              className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] px-3 py-1.5 rounded-xl text-[var(--foreground)]"
             >
-              Close
+              Luk
             </button>
           </div>
         </div>

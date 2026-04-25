@@ -222,9 +222,9 @@ export const defaultSiteContent = {
   contact: {
     email: 'alexanderbghenriksen@gmail.com',
     linkedin: 'https://www.linkedin.com/in/alexander-henriksen-298699383/',
-    widgetTitle: 'Contact me',
-    widgetSubtitle: 'Got an idea or a project? Let’s talk.',
-    widgetButtonLabel: "Let’s connect",
+    widgetTitle: 'Kontakt mig',
+    widgetSubtitle: 'Har du en idé eller et projekt? Lad os tage en snak.',
+    widgetButtonLabel: 'Kontakt',
   },
 } as const;
 

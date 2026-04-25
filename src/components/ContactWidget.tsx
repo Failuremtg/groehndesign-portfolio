@@ -96,7 +96,7 @@ export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="paper-button rounded-2xl px-3 py-2 text-[var(--foreground)]"
+              className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] rounded-2xl px-3 py-2 text-[var(--foreground)]"
               aria-label="Luk kontakt"
             >
               ✕
@@ -152,7 +152,7 @@ export function ContactWidget({ content }: { content?: ContactWidgetContent }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="paper-button mt-4 ml-auto inline-flex items-center gap-3 rounded-full px-5 py-4 text-base text-[var(--foreground)] transition-all hover:-translate-y-0.5"
+        className="paper-button bg-[var(--muted)] hover:bg-[var(--muted-2)] mt-4 ml-auto inline-flex items-center gap-3 rounded-full px-5 py-4 text-base text-[var(--foreground)] transition-all hover:-translate-y-0.5"
         aria-label={open ? 'Luk kontakt' : 'Åbn kontakt'}
       >
         <span className="relative w-11 h-11 rounded-full bg-[var(--background)] border-2 border-[var(--border)] flex items-center justify-center shadow-sm">
