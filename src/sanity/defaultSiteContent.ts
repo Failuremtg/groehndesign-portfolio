@@ -103,95 +103,94 @@ export const defaultSiteContent = {
     ],
   },
   projects: {
-    headline: 'Projects',
-    intro:
-      'Selected case studies. Each one is framed like a recruiter would scan: problem, role, process, solution, and outcome.',
+    headline: 'Projekter',
+    intro: 'Udvalgte case studies — skrevet så de er nemme at scanne: problem, rolle, proces, løsning og resultat/læring.',
     items: [
       {
         key: 'oakedex',
         title: 'Oakedex',
-        subtitle: 'Digital Pokémon TCG binder app',
+        subtitle: 'Digital Pokémon TCG binder-app',
         summary:
-          'Oakedex is a digital binder that helps collectors track and organize Pokémon cards across master sets and single‑Pokémon binders. The app focuses on fast browsing, clear progress feedback, and frictionless “missing card” flows.',
+          'Oakedex er en digital binder, der hjælper samlere med at tracke og organisere Pokémon-kort på tværs af master sets og single‑Pokémon binders. Fokus er hurtig browsing, tydelig progress og et friktionsfrit “mangler-kort” flow.',
         sections: {
           problem:
-            'Collectors track multiple sets and single‑Pokémon binders—and quickly lose overview. The product needed fast browsing, clear progress feedback, and low-friction updates.',
-          role: 'UX + product decisions, interaction design, and implementation (React). Wireframes in Figma → responsive UI and reusable components.',
+            'Samlere tracker flere sets og single‑Pokémon binders — og mister hurtigt overblikket. Produktet skulle gøre det nemt at browse, se progress og opdatere status uden friktion.',
+          role: 'UX + produktbeslutninger, interaktionsdesign og implementering (React). Wireframes i Figma → responsivt UI og genbrugelige komponenter.',
           process:
-            'Started with core flows (browse → find missing → update), designed key states (owned / missing / variants), then iterated the UI with tight feedback loops in code.',
+            'Startede med kerneflows (browse → find mangler → opdater), designede nøgle-states (ejet / mangler / varianter) og itererede UI’et med korte feedback-loops direkte i kode.',
           solutionBullets: [
-            'Binder collections with progress tracking',
-            'Card selection modals for variant handling',
-            'Consistent dark UI with clear hierarchy',
-            'Designed for fast daily collector usage on mobile',
+            'Binder-collections med progress tracking',
+            'Kortvælger-modals til håndtering af varianter',
+            'Klar informationshierarki og tydelige states',
+            'Designet til hurtig “daglig” brug på mobil',
           ],
           outcome:
-            'A complete end-to-end prototype with real flows and UI states. Key learning: small state design decisions (variants, missing prints) drive perceived quality for collectors.',
+            'En komplet end-to-end prototype med reelle flows og UI-states. Læring: små state-beslutninger (varianter, manglende prints) betyder meget for oplevet kvalitet hos samlere.',
         },
       },
       {
         key: 'cmdrtools',
         title: 'CMDRtools',
-        subtitle: 'Commander deck & match tracker',
+        subtitle: 'Commander deck- og match-tracker',
         summary:
-          'CMDRtools is a companion app for Magic: The Gathering Commander players. It helps you organize decks, track games, and capture match results in a way that supports both casual playgroups and more structured sessions.',
+          'CMDRtools er en companion-app til Magic: The Gathering Commander. Den hjælper med at organisere decks, tracke games og gemme resultater — uden at stjæle fokus fra selve spilaftenen.',
         sections: {
           problem:
-            'Commander nights are busy—tracking games and stats often becomes a distraction. The app needed quick setup, big tap targets, and useful history without friction.',
-          role: 'UX design + interaction patterns + implementation. Focused on mobile-first flows for real-time use.',
+            'Commander-aftener er travle — tracking af spil og stats bliver hurtigt en distraktion. App’en skulle have hurtig opsætning, store tap-targets og nyttig historik uden friktion.',
+          role: 'UX-design + interaktionsmønstre + implementering. Fokus på mobile-first flows til brug “i øjeblikket”.',
           process:
-            'Sketched flows in Figma, then built and refined components in Expo/React Native to reduce taps and keep the “game night” experience lightweight.',
+            'Skitsede flows i Figma og byggede derefter i Expo/React Native. Itererede komponenter for at reducere antal taps og holde oplevelsen let under spil.',
           solutionBullets: [
-            'Deck organization and quick access during play',
-            'Match tracking flows designed for speed',
-            'Clear, consistent UI built for dark environments',
+            'Deck-organisering og hurtig adgang under spil',
+            'Match-tracking flows designet til speed',
+            'Konsistent UI med fokus på overblik',
           ],
           outcome:
-            'A usable mobile companion with repeatable flows and a structured data model for decks + history. Learning: designing for “in the moment” use is mostly about reducing decisions and taps.',
+            'En brugbar mobil companion med gentagelige flows og en struktureret datamodel til decks + historik. Læring: “i øjeblikket” UX handler især om at reducere beslutninger og taps.',
         },
       },
       {
         key: 'clarivo',
         title: 'Clarivo',
-        subtitle: 'AI “parent insight” guide for games & slang',
+        subtitle: 'AI “parent insight”-guide til spil & slang',
         summary:
-          'Clarivo helps parents understand the online games, hobbies, trends, and slang their child talks about. Type a word or phrase, and Clarivo returns a calm explanation plus conversation starters.',
+          'Clarivo hjælper forældre med at forstå online spil, trends og slang, som deres barn nævner. Skriv et ord/udtryk, og få en rolig forklaring + samtalestartere.',
         sections: {
           problem:
-            'Parents hear game slang and trends but don’t know how to respond. They need calm explanations and conversation starters—fast, without feeling judged or “out of touch”.',
-          role: 'UX + tone-of-voice, prompt design, and UI implementation. Designed a structured result format (what it is / why kids care / conversation starters).',
+            'Forældre hører gaming-slang og trends, men ved ikke hvordan de skal reagere. De har brug for rolige forklaringer og samtalestartere — hurtigt og uden at føle sig “bagud”.',
+          role: 'UX + tone-of-voice, prompt design og UI-implementering. Designede et struktureret resultatformat (hvad det er / hvorfor børn går op i det / samtalestartere).',
           process:
-            'Iterated prompts and UI components together: example chips reduce blank-state friction, structured JSON output improves consistency, and history/favorites support repeat use.',
+            'Itererede prompts og UI sammen: eksempel-chips reducerer blank-state friktion, struktureret output øger konsistens, og historik/favoritter understøtter gentagen brug.',
           solutionBullets: [
-            'Ask screen with example prompts to reduce friction',
-            'Results designed for clarity + conversation starters',
-            'Favorites and history for quick revisits',
+            '“Spørg”-skærm med eksempler for at reducere friktion',
+            'Resultater designet til klarhed + samtalestartere',
+            'Favoritter og historik til hurtige genbesøg',
           ],
           outcome:
-            'A friendly AI-powered guide with safe fallbacks and repeatable structure. Learning: tone and structure matter as much as “accuracy” when trust is the product.',
+            'En venlig AI-guide med sikre fallbacks og gentagelig struktur. Læring: tone og struktur betyder lige så meget som “korrekthed”, når tillid er produktet.',
         },
       },
       {
         key: 'noyer-overwatch',
         title: 'Noyer Overwatch',
-        subtitle: 'Internship project • Sales alert dashboard',
+        subtitle: 'Praktikprojekt • Salgsalert-dashboard',
         summary:
-          'Noyer Overwatch is an automated “sales alert robot” built during my internship at noyer.dk. It monitors open sales across Shopify and e-conomic and sends email alerts when something needs attention.',
+          'Noyer Overwatch er en automatiseret “salgsalert-robot”, bygget under mit praktikforløb hos noyer.dk. Den overvåger åbne salg på tværs af Shopify og e-conomic og sender mails, når noget kræver opfølgning.',
         sections: {
           problem:
-            'Sales follow-up can slip when orders sit too long across systems. The team needed a simple daily overview and proactive alerts based on per-item thresholds.',
-          role: 'Internship project: product framing, dashboard UX, and full-stack implementation (Node.js + Express).',
+            'Opfølgning kan glide, når ordrer ligger for længe på tværs af systemer. Teamet havde brug for et simpelt dagligt overblik og proaktive alerts baseret på thresholds per vare.',
+          role: 'Praktikprojekt: product framing, dashboard-UX og full-stack implementering (Node.js + Express).',
           process:
-            'Mapped operational workflow, defined “urgency” rules, then built a dashboard optimized for quick daily checks. Iterated rules and UI together to keep alerts trustworthy.',
+            'Kortlagde workflow, definerede “urgency”-regler og byggede derefter et dashboard optimeret til hurtige daglige checks. Itererede regler og UI sammen for at holde alerts troværdige.',
           solutionBullets: [
-            'Monitors both Shopify orders and e-conomic documents with one unified model',
-            'Per-item thresholds with unit conversion (days / weeks / months)',
-            'Manual “Poll Now” trigger + progress reporting during long Shopify scans',
-            'Alert archive + restore workflow (set a new alert date)',
-            'Demo mode and dry-run mode for safer development',
+            'Overvåger både Shopify-ordrer og e-conomic-dokumenter via én samlet model',
+            'Per-vare thresholds med enhedskonvertering (dage / uger / måneder)',
+            'Manuel “Poll Now” + progress-indikator under lange Shopify-scans',
+            'Alert-arkiv + restore-workflow (sæt ny alert-dato)',
+            'Demo mode og dry-run mode for sikrere udvikling',
           ],
           outcome:
-            'A working internal tool with automated alerts and a clear dashboard for follow-up. Learning: operational UX is about clarity, prioritization, and preventing false alarms.',
+            'Et fungerende internt værktøj med automatiske alerts og et klart dashboard til opfølgning. Læring: operational UX handler om klarhed, prioritering og at undgå falske alarmer.',
         },
       },
     ],

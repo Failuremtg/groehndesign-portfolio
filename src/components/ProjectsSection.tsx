@@ -197,98 +197,98 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
   const clarivo = getProjectCopy(content, 'clarivo');
   const noyer = getProjectCopy(content, 'noyer-overwatch');
 
-  const oakedexTools = oakedex.tools?.length ? oakedex.tools : ['UX research', 'Figma', 'React', 'TCG APIs'];
-  const cmdrtoolsTools = cmdrtools.tools?.length ? cmdrtools.tools : ['UX design', 'Expo', 'React Native', 'Firebase'];
-  const clarivoTools = clarivo.tools?.length ? clarivo.tools : ['Prompting', 'TypeScript', 'UI design', 'AI APIs'];
+  const oakedexTools = oakedex.tools?.length ? oakedex.tools : ['UX-research', 'Figma', 'React', 'TCG APIs'];
+  const cmdrtoolsTools = cmdrtools.tools?.length ? cmdrtools.tools : ['UX-design', 'Expo', 'React Native', 'Firebase'];
+  const clarivoTools = clarivo.tools?.length ? clarivo.tools : ['Prompting', 'TypeScript', 'UI-design', 'AI APIs'];
   const noyerTools = noyer.tools?.length ? noyer.tools : ['Product framing', 'Node.js', 'Express', 'Shopify/e-conomic'];
 
   const projects = [
     {
       key: 'oakedex' as const,
       title: oakedex.title || 'Oakedex',
-      subtitle: oakedex.subtitle || 'Digital Pokémon TCG binder app',
+      subtitle: oakedex.subtitle || 'Digital Pokémon TCG binder-app',
       summary:
         oakedex.summary ||
-        'A digital binder that helps collectors track and organize Pokémon cards across master sets and single‑Pokémon binders.',
+        'En digital binder der hjælper samlere med at tracke og organisere Pokémon-kort på tværs af master sets og single‑Pokémon binders.',
       tools: oakedexTools,
       images: oakedexImages,
       sections: {
         problem:
           oakedex.sections.problem ||
-          'Collectors track multiple sets and single‑Pokémon binders—and quickly lose overview. The product needed fast browsing, clear progress feedback, and low-friction updates.',
+          'Samlere tracker flere sets og single‑Pokémon binders — og mister hurtigt overblikket. Produktet skulle gøre browsing, progress og opdateringer friktionsfri.',
         role:
           oakedex.sections.role ||
-          'UX + product decisions, interaction design, and implementation (React). Wireframes in Figma → responsive UI and reusable components.',
+          'UX + produktbeslutninger, interaktionsdesign og implementering (React). Wireframes i Figma → responsivt UI og genbrugelige komponenter.',
         outcome:
           oakedex.sections.outcome ||
-          'A complete end-to-end prototype with real flows and UI states. Key learning: small state design decisions (variants, missing prints) drive perceived quality for collectors.',
+          'En komplet end-to-end prototype med reelle flows og UI-states. Læring: små state-beslutninger (varianter, manglende prints) betyder meget for oplevet kvalitet hos samlere.',
         process:
           oakedex.sections.process ||
-          'Started with core flows (browse → find missing → update), designed key states (owned / missing / variants), then iterated the UI with tight feedback loops in code.',
+          'Startede med kerneflows (browse → find mangler → opdater), designede nøgle-states (ejet / mangler / varianter) og itererede UI’et med korte feedback-loops i kode.',
         solutionBullets:
           oakedex.sections.solutionBullets?.length
             ? oakedex.sections.solutionBullets
             : [
-                'Binder collections with progress tracking',
-                'Card selection modals for variant handling',
-                'Clear hierarchy + fast daily mobile usage',
+                'Binder-collections med progress tracking',
+                'Kortvælger-modals til håndtering af varianter',
+                'Klar hierarki + hurtig daglig brug på mobil',
               ],
       },
     },
     {
       key: 'cmdrtools' as const,
       title: cmdrtools.title || 'CMDRtools',
-      subtitle: cmdrtools.subtitle || 'Commander deck & match tracker',
+      subtitle: cmdrtools.subtitle || 'Commander deck- og match-tracker',
       summary:
         cmdrtools.summary ||
-        'A companion app for Commander players to organize decks, track games, and capture match results with low friction.',
+        'En companion-app til Commander spillere: organiser decks, track games og gem resultater med lav friktion.',
       tools: cmdrtoolsTools,
       images: cmdrtoolsImages,
       sections: {
         problem:
           cmdrtools.sections.problem ||
-          'Commander nights are busy—tracking games and stats often becomes a distraction. The app needed quick setup, big tap targets, and useful history without friction.',
+          'Commander-aftener er travle — tracking af spil og stats bliver hurtigt en distraktion. App’en skulle have hurtig opsætning, store tap-targets og nyttig historik uden friktion.',
         role:
           cmdrtools.sections.role ||
-          'UX design + interaction patterns + implementation. Focused on mobile-first flows for real-time use.',
+          'UX-design + interaktionsmønstre + implementering. Fokus på mobile-first flows til brug “i øjeblikket”.',
         outcome:
           cmdrtools.sections.outcome ||
-          'A usable mobile companion with repeatable flows and a structured data model for decks + history.',
+          'En brugbar mobil companion med gentagelige flows og en struktureret datamodel til decks + historik.',
         process:
           cmdrtools.sections.process ||
-          'Sketched flows in Figma, then built and refined components in Expo/React Native to reduce taps and keep the “game night” experience lightweight.',
+          'Skitsede flows i Figma og byggede derefter i Expo/React Native. Itererede komponenter for at reducere antal taps og holde oplevelsen let under spil.',
         solutionBullets:
           cmdrtools.sections.solutionBullets?.length
             ? cmdrtools.sections.solutionBullets
-            : ['Deck organization and quick access during play', 'Match tracking designed for speed', 'Clear, consistent UI'],
+            : ['Deck-organisering og hurtig adgang under spil', 'Match-tracking designet til speed', 'Klar, konsistent UI'],
       },
     },
     {
       key: 'clarivo' as const,
       title: clarivo.title || 'Clarivo',
-      subtitle: clarivo.subtitle || 'AI “parent insight” guide for games & slang',
+      subtitle: clarivo.subtitle || 'AI “parent insight”-guide til spil & slang',
       summary:
         clarivo.summary ||
-        'Helps parents understand online games, slang, and trends with calm explanations and conversation starters.',
+        'Hjælper forældre med at forstå online spil, trends og slang med rolige forklaringer og samtalestartere.',
       tools: clarivoTools,
       images: clarivoImages,
       sections: {
         problem:
           clarivo.sections.problem ||
-          'Parents hear game slang and trends but don’t know how to respond. They need calm explanations and conversation starters—fast, without feeling judged.',
+          'Forældre hører gaming-slang og trends, men ved ikke hvordan de skal reagere. De har brug for rolige forklaringer og samtalestartere — hurtigt og uden at føle sig dømt.',
         role:
           clarivo.sections.role ||
-          'UX + tone-of-voice, prompt design, and UI implementation. Designed a structured result format.',
+          'UX + tone-of-voice, prompt design og UI-implementering. Designede et struktureret resultatformat.',
         outcome:
           clarivo.sections.outcome ||
-          'A friendly AI-powered guide with safe fallbacks and repeatable structure. Learning: tone and structure matter as much as accuracy when trust is the product.',
+          'En venlig AI-guide med sikre fallbacks og gentagelig struktur. Læring: tone og struktur betyder lige så meget som korrekthed, når tillid er produktet.',
         process:
           clarivo.sections.process ||
-          'Iterated prompts and UI together: example chips reduce blank-state friction, structured output improves consistency, and history/favorites support repeat use.',
+          'Itererede prompts og UI sammen: eksempel-chips reducerer blank-state friktion, struktureret output øger konsistens, og historik/favoritter understøtter gentagen brug.',
         solutionBullets:
           clarivo.sections.solutionBullets?.length
             ? clarivo.sections.solutionBullets
-            : ['Example prompts reduce friction', 'Structured results for clarity', 'Favorites and history for revisits'],
+            : ['Eksempler reducerer friktion', 'Strukturerede resultater for klarhed', 'Favoritter og historik til genbesøg'],
       },
     },
     {
@@ -296,29 +296,29 @@ export function ProjectsSection({ id, content }: { id: string; content?: Project
       title: noyer.title || 'Noyer Overwatch',
       subtitle:
         noyer.subtitle ||
-        'Internship project • Sales alert dashboard for noyer.dk',
+        'Praktikprojekt • Salgsalert-dashboard for noyer.dk',
       summary:
         noyer.summary ||
-        'An automated sales alert robot that monitors open sales across systems and emails the team when something needs attention.',
+        'En automatiseret salgsalert-robot, der overvåger åbne salg på tværs af systemer og mailer teamet, når noget kræver opmærksomhed.',
       tools: noyerTools,
       images: noyerOverwatchImages,
       sections: {
         problem:
           noyer.sections.problem ||
-          'Sales follow-up can slip when orders sit too long across systems. The team needed a simple daily overview and proactive alerts based on per-item thresholds.',
+          'Opfølgning kan glide, når ordrer ligger for længe på tværs af systemer. Teamet havde brug for et simpelt dagligt overblik og proaktive alerts baseret på thresholds per vare.',
         role:
           noyer.sections.role ||
-          'Internship project: product framing, dashboard UX, and full-stack implementation (Node.js + Express).',
+          'Praktikprojekt: product framing, dashboard-UX og full-stack implementering (Node.js + Express).',
         outcome:
           noyer.sections.outcome ||
-          'A working internal tool with automated alerts and a clear dashboard for follow-up.',
+          'Et fungerende internt værktøj med automatiske alerts og et klart dashboard til opfølgning.',
         process:
           noyer.sections.process ||
-          'Mapped workflow, defined urgency rules, then built a dashboard optimized for quick daily checks. Iterated rules and UI together to keep alerts trustworthy.',
+          'Kortlagde workflow, definerede urgency-regler og byggede et dashboard optimeret til hurtige daglige checks. Itererede regler og UI sammen for at holde alerts troværdige.',
         solutionBullets:
           noyer.sections.solutionBullets?.length
             ? noyer.sections.solutionBullets
-            : ['Unified sales model across systems', 'Per-item thresholds + unit conversion', 'Alert archive + restore workflow'],
+            : ['Samlet salgsmodel på tværs af systemer', 'Per-vare thresholds + enhedskonvertering', 'Alert-arkiv + restore-workflow'],
       },
     },
   ];
