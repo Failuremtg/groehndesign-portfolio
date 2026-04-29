@@ -43,6 +43,7 @@ export type SiteContent = {
       title?: string;
       subtitle?: string;
       summary?: string;
+      tools?: string[];
       sections?: {
         problem?: string;
         role?: string;

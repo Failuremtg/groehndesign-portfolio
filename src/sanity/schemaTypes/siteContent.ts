@@ -227,6 +227,12 @@ export const siteContent = defineType({
                 { name: 'subtitle', title: 'Subtitle', type: 'string' },
                 { name: 'summary', title: 'Summary paragraph', type: 'text', rows: 3 },
                 {
+                  name: 'tools',
+                  title: 'Tools',
+                  type: 'array',
+                  of: [{ type: 'string' }],
+                },
+                {
                   name: 'sections',
                   title: 'Case study sections',
                   type: 'object',

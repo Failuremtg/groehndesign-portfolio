@@ -112,6 +112,7 @@ export const defaultSiteContent = {
         subtitle: 'Digital Pokémon TCG binder-app',
         summary:
           'Oakedex er en digital binder, der hjælper samlere med at tracke og organisere Pokémon-kort på tværs af master sets og single‑Pokémon binders. Fokus er hurtig browsing, tydelig progress og et friktionsfrit “mangler-kort” flow.',
+        tools: ['UX-research', 'Figma', 'React', 'TCG APIs'],
         sections: {
           problem:
             'Samlere tracker flere sets og single‑Pokémon binders — og mister hurtigt overblikket. Produktet skulle gøre det nemt at browse, se progress og opdatere status uden friktion.',
@@ -134,6 +135,7 @@ export const defaultSiteContent = {
         subtitle: 'Commander deck- og match-tracker',
         summary:
           'CMDRtools er en companion-app til Magic: The Gathering Commander. Den hjælper med at organisere decks, tracke games og gemme resultater — uden at stjæle fokus fra selve spilaftenen.',
+        tools: ['UX-design', 'Expo', 'React Native', 'Firebase'],
         sections: {
           problem:
             'Commander-aftener er travle — tracking af spil og stats bliver hurtigt en distraktion. App’en skulle have hurtig opsætning, store tap-targets og nyttig historik uden friktion.',
@@ -155,6 +157,7 @@ export const defaultSiteContent = {
         subtitle: 'AI “parent insight”-guide til spil & slang',
         summary:
           'Clarivo hjælper forældre med at forstå online spil, trends og slang, som deres barn nævner. Skriv et ord/udtryk, og få en rolig forklaring + samtalestartere.',
+        tools: ['Prompting', 'TypeScript', 'UI-design', 'AI APIs'],
         sections: {
           problem:
             'Forældre hører gaming-slang og trends, men ved ikke hvordan de skal reagere. De har brug for rolige forklaringer og samtalestartere — hurtigt og uden at føle sig “bagud”.',
@@ -176,6 +179,7 @@ export const defaultSiteContent = {
         subtitle: 'Praktikprojekt • Salgsalert-dashboard',
         summary:
           'Noyer Overwatch er en automatiseret “salgsalert-robot”, bygget under mit praktikforløb hos noyer.dk. Den overvåger åbne salg på tværs af Shopify og e-conomic og sender mails, når noget kræver opfølgning.',
+        tools: ['Product framing', 'Node.js', 'Express', 'Shopify/e-conomic'],
         sections: {
           problem:
             'Opfølgning kan glide, når ordrer ligger for længe på tværs af systemer. Teamet havde brug for et simpelt dagligt overblik og proaktive alerts baseret på thresholds per vare.',
