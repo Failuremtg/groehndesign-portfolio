@@ -103,22 +103,12 @@ export function SkillsSection({ id, content }: SkillsSectionProps) {
 
   const accentTopBar =
     'absolute inset-x-0 top-0 h-[3px] opacity-80 bg-[linear-gradient(90deg,var(--primary),rgba(62,43,246,0.0))]';
-  const accentDot = (accentClass: string) => {
-    if (accentClass.includes('gold')) return 'bg-secondary';
-    if (accentClass.includes('mint')) return 'bg-emerald-400';
-    if (accentClass.includes('blue')) return 'bg-sky-400';
-    return 'bg-primary';
-  };
 
   return (
     <section id={id} className="container mx-auto px-4 py-16 md:py-24">
       <header className="max-w-3xl">
-        <p className="paper-pill accent inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs sm:text-sm text-black/75">
-          <span className="inline-block h-2 w-2 rounded-full bg-primary" aria-hidden />
-          Praktisk toolkit
-        </p>
         <h2
-          className="mt-4 text-2xl font-bold md:text-3xl text-[var(--foreground)]"
+          className="text-2xl font-bold md:text-3xl text-[var(--foreground)]"
           style={{ fontFamily: 'var(--font-display), serif' }}
         >
           {content?.headline || 'Kompetencer'}
@@ -146,10 +136,7 @@ export function SkillsSection({ id, content }: SkillsSectionProps) {
                 <GroupIcon name={g.title || ''} />
               </div>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className={`h-2 w-2 rounded-full ${accentDot(g.accentClass)}`} aria-hidden />
-                  <h3 className="text-base font-semibold text-[var(--foreground)] leading-snug">{g.title}</h3>
-                </div>
+                <h3 className="text-base font-semibold text-[var(--foreground)] leading-snug">{g.title}</h3>
                 <p className="mt-1 text-xs text-[var(--text-subtle)] leading-relaxed">
                   Udvalgte færdigheder jeg bruger i praksis.
                 </p>
